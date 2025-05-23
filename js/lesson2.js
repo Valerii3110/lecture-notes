@@ -60,7 +60,9 @@ let width = "50px";
 let height = "200.53px";
 // height = Number.parseInt(height); // 200
 // console.log(height); // 200
+
 /**Метщд Number.parseFloat */
+
 /**Метод Number.parseFloat() аналогічний Number.parseInt() з однієї відмінністю: перетворює рядок на число з плаваючою крапкою. 
 //console.log(Number.parseFloat("5")); // 5
 //console.log(Number.parseFloat("5.5")); // 5.5
@@ -210,3 +212,22 @@ const str = "Hello"; // глобальна змінна- змынна створ
 // console.log(msg);// ReferenceError: msg is not defined
 // // msg - ReferenceError: msg is not defined
 // console.log(a); // ReferenceError: a is not defined
+
+/**Напиши функцію calcBMI(weight, height)  яка розраховує та повертає індекс маси тіла людини. Для цього необхідно розділити вагу на квадрат висоти
+ *
+ * Вага та висота будуть спеціально передані як рядки.Не цілі числа можуть бути задані у вигляді дробових чисел з крапкою, наприклад 24,7 або 24.7,тобто як роздільник дробової частини може бути кома.
+ *
+ * Індекс маси необхідно округлити до однієї цифри після коми.
+ */
+
+// function calcBMI(weight, height) {
+//   let numWeight = weight.replace(",", "."); //-заміняємо кому на крапку
+//   numWeight = Number.parseFloat(numWeight); //-перетворюємо рядок на число
+//   console.log(numWeight); // 88.3 привели вагу до числа
+
+//   let Height = Number.parseFloat(height); //-перетворюємо рядок на число
+//   console.log(Height); // 1.75 привели висоту до числа
+//   const bmi = weight / (height ** 2); //-розраховуємо індекс маси тіла
+//   return bmi.toFixed(1);//-округлюємо до однієї цифри після коми повертає індекс маси тіла
+// }
+// const bmi = calcBMI("88.3", "1.75");
