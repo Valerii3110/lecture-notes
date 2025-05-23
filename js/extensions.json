@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode", // Форматування коду
+    "dbaeumer.vscode-eslint", // Аналіз коду з ESLint
+    "streetsidesoftware.code-spell-checker", // Перевірка орфографії
+    "vscode-google-translate", // Переклад тексту в коді
+    "aaron-bond.better-comments", // Кольорові коментарі (TODO, NOTE тощо)
+    "formulahendry.auto-close-tag", // Автозакриття HTML/JSX тегів
+    "formulahendry.auto-rename-tag", // Автоперейменування тегів
+    "ecmel.vscode-html-css", // Підказки класів CSS у HTML
+    "gruntfuggly.todo-tree" // Дерево позначок TODO/FIXME
+  ]
+}
