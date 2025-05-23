@@ -33,7 +33,7 @@
 //console.log("Alice" < "alice"); // true; - порівняння рядків відбувається за юнікодом, тому "A" < "a" - true, оскільки "A" має менше числове представлення ніж "a";Символ в нижньому регістрі має більше числове представлення ніж символ в верхньому регістрі;
 
 /**Арифметичні функції */
-let width = "50px";
+// let width = "50px";
 // width = Number(width);
 // console.log(width); // NaN
 
@@ -54,10 +54,10 @@ let width = "50px";
 //  console.log(Number.parseInt("")); // NaN
 //  console.log(Number.parseInt("qweqwe")); // NaN
 */
-//width = Number.parseInt(width); //
+// width = Number.parseInt(width); //
 // console.log(width); // 50
 
-let height = "200.53px";
+// let height = "200.53px";
 // height = Number.parseInt(height); // 200
 // console.log(height); // 200
 
@@ -108,14 +108,9 @@ console.log(Math.round(1.7)); // 2
 // console.log(Math.round(value)); // 28-округлення до найближчого цілого числа;
 
 /**Використовувати метод числа toFixed() для округлення результату до певної кількості знаків після крапки.
-
-
-
 console.log((0.1 + 0.2).toFixed(1)); // "0.3"
 console.log((5).toFixed(2));  //  ”5.00”
 console.log((8.762195).toFixed(4));  //  “8.7622”
-
-
 
 Метод toFixed() повертає рядок, що представляє число із зазначеною кількістю знаків після крапки. Таким чином, ми можемо отримати заокруглений результат з необхідною точністю. */
 
