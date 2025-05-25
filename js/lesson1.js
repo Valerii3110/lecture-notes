@@ -18,8 +18,8 @@ const num = 10;
 10;
 
 // Рядковий літерал
-const str = 'JavaScript is awesome';
-('JavaScript is awesome!');
+const str = "JavaScript is awesome";
+("JavaScript is awesome!");
 /**Для підключення скрипта JavaScript до HTML-сторінки можна використати тег <script>. Існує кілька способів, як це можна зробити: */
 /**Вбудований скрипт :
 <!DOCTYPE html>
@@ -86,10 +86,10 @@ console.log(username); // "Poly"
 
 /**Типи даних  */
 const age2 = 10; //Number -число Числа (Number) можуть бути позитивними чи негативними, цілими або дробовими. Ціла та дробова частини числа розділяються крапкою.
-const str2 = "JavaScript is awesome";//-String-рядок Рядок (String) є послідовністю символів, вкладених в одинарні '' або подвійні лапки "".
+const str2 = "JavaScript is awesome"; //-String-рядок Рядок (String) є послідовністю символів, вкладених в одинарні '' або подвійні лапки "".
 
-const message = `hello`;//-string-рядок
-const isOpen = true;//-Booleanбулевий тип даних Логічний тип даних (Boolean) має лише два значення: true і false.
+const message = `hello`; //-string-рядок
+const isOpen = true; //-Booleanбулевий тип даних Логічний тип даних (Boolean) має лише два значення: true і false.
 
 //На відміну від рядків, логічний тип даних пишеться без лапок. Порівняй:
 
@@ -204,13 +204,11 @@ console.log(productName.length); // 12
 console.log("Repair droid".length); // 12
 пв*/
 
-/
 /**Рядки — це набори символів, де кожен символ має свій порядковий номер (індекс). Індексація елементів рядка починається з нуля. Перший символ має індекс 0, другий — індекс 1, третій — 2 і так далі. */
 //**Для доступу до певного символу рядка ми використовуємо синтаксис квадратних дужок, де вказуємо індекс потрібного символу: string[index], тобто рядок[індекс].
 
- */
 //                 0123-індекс символа
-const str = "Hello world"
+const str = "Hello world";
 console.log(str[6]); // -визначення символу через його індекс
 /**Довжина рядка */
 const product = "Repair droid";
@@ -226,5 +224,3 @@ const product = "Repair droid";
 console.log(product[product.length - 1]); // 'd'
 
  */
-
-
