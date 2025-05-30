@@ -110,11 +110,11 @@ const isOpen = true; //-Booleanбулевий тип даних Логічний
 // console.log(age); // ReferenceError: age is not defined
 
 //** Оголошення змінної age*/
-let age3 = 20;
+// let age3 = 20;
 
-// ✅ Правильно, звертаємося після оголошення
-age = 25;
-console.log(age); // 25
+// // ✅ Правильно, звертаємося після оголошення
+// age = 25;
+// console.log(age); // 25
 
 /**Арифметичні операції */
 
@@ -172,7 +172,7 @@ console.log(age); // 25
 // const LastName = "Franko";
 
 // const fullName = firstName + LastName;
-console.log(fullName);
+// console.log(fullName);
 /**Конкатенація рядків
 Якщо застосувати оператор + до рядка та будь-якого іншого типу даних, результатом буде новий рядок, що містить об'єднання вихідних значень. Це називається конкатенація (склеювання).
 const message = "Mango " + "is" + " happy";
@@ -208,13 +208,13 @@ console.log("Repair droid".length); // 12
 //**Для доступу до певного символу рядка ми використовуємо синтаксис квадратних дужок, де вказуємо індекс потрібного символу: string[index], тобто рядок[індекс].
 
 //                 0123-індекс символа
-const str = "Hello world";
-console.log(str[6]); // -визначення символу через його індекс
-/**Довжина рядка */
-const product = "Repair droid";
-console.log(product[0]); // 'R'
-console.log(product[5]); // 'r'
-console.log(product[11]); // 'd'
+// const str = "Hello world";
+// console.log(str[6]); // -визначення символу через його індекс
+// /**Довжина рядка */
+// const product = "Repair droid";
+// console.log(product[0]); // 'R'
+// console.log(product[5]); // 'r'
+// console.log(product[11]); // 'd'
 /**Отримання останнього символу рядка можливе за його індексом string[lastIndex]. Щоб знайти індекс останнього символу рядка, треба від довжини цього рядка відняти одиницю string.length - 1 const product = "Repair droid";
 const lastElementIndex = product.length - 1;
 console.log(product[lastElementIndex]); // 'd'

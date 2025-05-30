@@ -1,87 +1,87 @@
-//! Мутоди рядків в JavaScript
+//! Мутоди рядків в JavaScript */
 //! Метод slice() повертає новий масив, який містить копію частини вихідного масиву.
-const user = "Alice Franko";
-const str = user.slice(1, 8); //! метод slice() вирізає частину рядка з індексами від 0 до 3 (не включно)
-console.log(str); // lice Fr
-//! Метод slice() може приймати два аргументи: початковий індекс і кінцевий індекс (не включно).
+//const user = "Alice Franko";
+//const str = user.slice(1, 8); //! метод slice() вирізає частину рядка з індексами від 0 до 3 (не включно)
+//console.log(str); // lice Fr
+//ПОРАДА Метод slice() може приймати два аргументи: початковий індекс і кінцевий індекс (не включно).
 //! Якщо другий аргумент не вказано, метод slice() повертає всі елементи від початкового індексу до кінця масиву.
-console.log(user.slice(1)); // lice Franko
+//console.log(user.slice(1)); // lice Franko
 //! Метод slice() також може приймати від'ємні індекси, які вказують на позицію з кінця масиву.
 
-const str2 = user.slice(-5, -1); //! метод slice() вирізає частину рядка з індексами від -5 до -1 (не включно)
-console.log(str2); // Frank
-const user2 = user.slice(); //! метод slice() без аргументів повертає копію всього рядка
-console.log(user2); // Alice Franko
+//const str2 = user.slice(-5, -1); //! метод slice() вирізає частину рядка з індексами від -5 до -1 (не включно)
+//console.log(str2); // Frank
+//const user2 = user.slice(); //! метод slice() без аргументів повертає копію всього рядка
+//console.log(user2); // Alice Franko
 
 //! Метод tolowerCase() перетворює всі символи рядка на малі літери.
-const lowerCaseUser = user.toLowerCase(); //! метод toLowerCase() перетворює всі символи рядка на малі літери.
+//const lowerCaseUser = user.toLowerCase(); //! метод toLowerCase() перетворює всі символи рядка на малі літери.
 //* Це корисно для порівняння рядків без урахування регістру.
-console.log(lowerCaseUser); // alice franko
+//console.log(lowerCaseUser); // alice franko
 //! Метод toUpperCase() перетворює всі символи рядка на великі літери.
-const upperCaseUser = user.toUpperCase(); //! метод toUpperCase() перетворює всі символи рядка на великі літери.
-console.log(upperCaseUser); // ALICE FRANKO
+//const upperCaseUser = user.toUpperCase(); //! метод toUpperCase() перетворює всі символи рядка на великі літери.
+//console.log(upperCaseUser); // ALICE FRANKO
 
 //!Метод includes() перевіряє, чи містить рядок певний підрядок, який метод отримує в себе як аргумент, і повертає булеве значення.
-console.log(user.includes("li")); // true
-console.log(user.includes("lalala")); // false
+//console.log(user.includes("li")); // true
+//console.log(user.includes("lalala")); // false
 //* Meтод includes() чутливий до регістру, тобто "Alice" і "alice" будуть вважатися різними рядками.
-console.log(user.includes("alice")); // false
+//console.log(user.includes("alice")); // false
 
 //! Метод startWith() перевіряє, чи починається рядок з певного підрядка, який метод отримує в себе як аргумент, і повертає булеве значення.
-console.log(user.startsWith("Alice")); // true
-console.log(user.startsWith("alice")); // false
+//console.log(user.startsWith("Alice")); // true
+//console.log(user.startsWith("alice")); // false
 //* meтод startsWith() також чутливий до регістру, тобто "Alice" і "alice" будуть вважатися різними рядками.
 //! Метод endsWith() перевіряє, чи закінчується рядок певним підрядком, який метод отримує в себе як аргумент, і повертає булеве значення.
-console.log(user.endsWith("Franko")); // true
-console.log(user.endsWith("franko")); // false
+//console.log(user.endsWith("Franko")); // true
+//console.log(user.endsWith("franko")); // false
 //* meтод endsWith() також чутливий до регістру, тобто "Franko" і "franko" будуть вважатися різними рядками.
 //! Метод indexOf() повертає перший індекс, за яким знайдено вказаний підрядок у рядку, або -1, якщо підрядок не знайдено.
-console.log(user.indexOf("c")); // 2
-console.log(user.indexOf("ce")); // 2
-console.log(user.indexOf("x")); // -1
-console.log(user.indexOf("a")); //! 0-якщо у вихідному рядку є декілька однакових символів, то метод indexOf() поверне індекс першого входження цього символу
+// console.log(user.indexOf("c")); // 2
+// console.log(user.indexOf("ce")); // 2
+// console.log(user.indexOf("x")); // -1
+// console.log(user.indexOf("a")); //! 0-якщо у вихідному рядку є декілька однакових символів, то метод indexOf() поверне індекс першого входження цього символу
 
 //! Метод lastIndexOf() повертає останній індекс, за яким знайдено вказаний підрядок у рядку, або -1, якщо підрядок не знайдено.
-console.log(user.lastIndexOf("c")); // 3
-logconsole.log(user.lastIndexOf("ce")); // 4
-console.log(user.lastIndexOf("x")); // -1
-console.log(user.lastIndexOf("a")); //! 6-якщо у вихідному рядку є декілька однакових символів, то метод lastIndexOf() поверне індекс останнього входження цього символу.
+// console.log(user.lastIndexOf("c")); // 3
+// logconsole.log(user.lastIndexOf("ce")); // 4
+// console.log(user.lastIndexOf("x")); // -1
+// console.log(user.lastIndexOf("a")); //! 6-якщо у вихідному рядку є декілька однакових символів, то метод lastIndexOf() поверне індекс останнього входження цього символу.
 //! Метод trim() видаляє пробіли з початку і кінця рядка.
-const userWithSpaces = "   Alice Franko   ";
-const trimmedUser = userWithSpaces.trim(); //! метод trim() видаляє пробіли з початку і кінця рядка
-console.log(trimmedUser); // Alice Franko
+//const userWithSpaces = "   Alice Franko   ";
+//const trimmedUser = userWithSpaces.trim(); //! метод trim() видаляє пробіли з початку і кінця рядка
+//console.log(trimmedUser); // Alice Franko
 
 //*Форматування посилання
 //* Напиши скрипт який перевіряє чи закінчується значення змінної link символом /. Якщо ні, додай до кінця значення link цей символ. Використай конструкцію if...else.
 
 //let link = "https://my-site.com/about";
 
-if (!link.endsWith("/")) {
-  link += "/";
-} else {
-  console.log(link);
-}
+// if (!link.endsWith("/")) {
+//   link += "/";
+// } else {
+//   console.log(link);
+// }
 
 //* Напиши скрипт який перевіряє чи закінчується значення змінної link символом /. Якщо ні, додай до кінця значення link цей символ, але тільки втому випадку якщо в link є підрядок "my-site"  Використай if...else або тернарний оператор.
 
-let link = "https://mysite.com/about";
-if (!link.endsWith("/") && link.includes("my-site")) {
-  link += "/";
-}
+// let link = "https://mysite.com/about";
+// if (!link.endsWith("/") && link.includes("my-site")) {
+//   link += "/";
+// }
 
-console.log(link);
+// console.log(link);
 //*або тернарний оператор
-const linkName =
-  endsWith(link, "/") && includes(link, "my-site") ? link + "/" : link;
+// const linkName =
+//   endsWith(link, "/") && includes(link, "my-site") ? link + "/" : link;
 
 //* Пошук у рядку методом includes()
-const blacklistWord1 = "spam";
-const blacklistWord2 = "sale";
+// const blacklistWord1 = "spam";
+// const blacklistWord2 = "sale";
 
-const string =
-  "Hello, I'm Prince Abdul, this is not spam, I'm offering you a mysite sale!";
-const string2 = "Biggest Sale this week, don't miss out!";
-const string3 = "#fatlivesmatter advertising campaing";
+// const string =
+//   "Hello, I'm Prince Abdul, this is not spam, I'm offering you a mysite sale!";
+// const string2 = "Biggest Sale this week, don't miss out!";
+// const string3 = "#fatlivesmatter advertising campaing";
 
 //*console.log(string.includes(blacklistWord1)); // true
 //*console.log(string.includes(blacklistWord2)); // true
@@ -117,87 +117,87 @@ const string3 = "#fatlivesmatter advertising campaing";
 
 // console.log("after");
 
-for (let i = 10; i >= 0; i -= 1) {
-  console.log(i); // Тут можна виконати будь-які дії з i
-  //* 10
-  //* 9
-  //* 8
-  //* 7
-  //* 6
-  //* 5
-  //* 4
-  //* 3
-  //* 2
-  //* 1
-  //* 0
-}
+// for (let i = 10; i >= 0; i -= 1) {
+//   console.log(i); // Тут можна виконати будь-які дії з i
+//   //* 10
+//   //* 9
+//   //* 8
+//   //* 7
+//   //* 6
+//   //* 5
+//   //* 4
+//   //* 3
+//   //* 2
+//   //* 1
+//   //* 0
+// }
 
-const str = "Alice Franko";
-for (let i = 0; i < str.length; i += 1) {
-  console.log(str[i]); // Тут можна виконати будь-які дії з символами рядка
-  if (str[i] === "i") {
-    console.log("Found 'i' at index", i); // Виведе індекс символу 'i'
-  }
-  //* A
-  //* l
-  //* i
-  //* c
-  //* e
-  //*
-  //* F
-  //* r
-  //* a
-  //* n
-  //* k
-  //* o
-  //* Found 'i' at index 2
-  break; // Використання break для виходу з циклу
-  //* Цикл завершиться після першої ітерації
-  //* і виведе лише перший символ рядка "A"
-  //* Якщо ви хочете вивести всі символи рядка, видаліть break
-  //* або використовуйте continue для пропуску ітерації
-}
-console.log(str.length); // 5
+// const str = "Alice Franko";
+// for (let i = 0; i < str.length; i += 1) {
+//   console.log(str[i]); // Тут можна виконати будь-які дії з символами рядка
+//   if (str[i] === "i") {
+//     console.log("Found 'i' at index", i); // Виведе індекс символу 'i'
+//   }
+//   //* A
+//   //* l
+//   //* i
+//   //* c
+//   //* e
+//   //*
+//   //* F
+//   //* r
+//   //* a
+//   //* n
+//   //* k
+//   //* o
+//   //* Found 'i' at index 2
+//   break; // Використання break для виходу з циклу
+//   //* Цикл завершиться після першої ітерації
+//   //* і виведе лише перший символ рядка "A"
+//   //* Якщо ви хочете вивести всі символи рядка, видаліть break
+//   //* або використовуйте continue для пропуску ітерації
+// }
+// console.log(str.length); // 5
 
-const blacklistWord2 = "sale";
-const string2 = "Biggest Sale this week, don't miss out!";
-const string3 = "#fatlivesmatter advertising campaing";
-function foo(str, blk) {
-  return str.toLowerCase().includes(blk);
-}
-foo(str: any, blk: any) 
-console.log(foo(string2)); // true
-console.log(foo(string3)); // false
+// const blacklistWord2 = "sale";
+// const string2 = "Biggest Sale this week, don't miss out!";
+// const string3 = "#fatlivesmatter advertising campaing";
+// function foo(str, blk) {
+//   return str.toLowerCase().includes(blk);
+// }
+// foo(str: any, blk: any)
+// console.log(foo(string2)); // true
+// console.log(foo(string3)); // false
 
 //! Інкремент| Декремент - потрібний для того, щоб змінювати значенння  моєЇ зміної на 1.
 //! Декремент - це зменшення значення моєї змінної на 1.
-let a =10;
-const b= a++;
-a++; // Інкремент посфіксний
-++a; // Інкремент префіксний
-console.log(a); // 11
-a--; // Декремент
-console.log(a); // 10
+// let a =10;
+// const b= a++;
+// a++; // Інкремент посфіксний
+// ++a; // Інкремент префіксний
+// console.log(a); // 11
+// a--; // Декремент
+// console.log(a); // 10
 //* Якщо ми використовуємо посфіксний інкремент або декремент, то значення змінної буде змінено після того, як буде виконано вираз.
-logconsole.log(b); // 10 b = a(10) + 1 = 11
+//console.log(b); // 10 b = a(10) + 1 = 11
 //* Якщо ми використовуємо префіксний інкремент або декремент, то значення змінної буде змінено перед тим, як буде виконано вираз.
-const b = ++a; // Префіксний інкремент
-console.log(b); // 11 a += 1; b = a(11)
+// const b = ++a; // Префіксний інкремент
+// console.log(b); // 11 a += 1; b = a(11)
 
-const c= --a; // Префіксний декремент
-console.log(c); // 10 a -= 1; c = a(10)
-const d = a--; // Посфіксний декремент
-console.log(d); // 10 a = 9; d = a(10) - 1
+// const c = --a; // Префіксний декремент
+// console.log(c); // 10 a -= 1; c = a(10)
+// const d = a--; // Посфіксний декремент
+// console.log(d); // 10 a = 9; d = a(10) - 1
 
-const srt4 = "Alice";
-for (let i = 0; i < srt4.length; i ++) {
-  console.log(srt4[i]); // Тут можна виконати будь-які дії з символами рядка
-  //* A
-  //* l
-  //* i
-  //* c
-  //* e
-}
+// const srt4 = "Alice";
+// for (let i = 0; i < srt4.length; i++) {
+//   console.log(srt4[i]); // Тут можна виконати будь-які дії з символами рядка
+//   //* A
+//   //* l
+//   //* i
+//   //* c
+//   //* e
+// }
 
 //! Цикл while
 //* Цикл while використовується для повторення блоку коду, поки умова є істинною.
@@ -214,7 +214,7 @@ for (let i = 0; i < srt4.length; i ++) {
 //   //* 3
 //   //* 4
 //   //* after
-  
+
 // }
 //* console.log("after");
 
@@ -226,7 +226,7 @@ for (let i = 0; i < srt4.length; i ++) {
 //* do {
 //*   console.log (condition);
 //*   condition++; // Збільшуємо умову на 1
-//* }   while (a < 6) 
+//* }   while (a < 6)
 
 //* console.log("after");
 
@@ -253,11 +253,11 @@ const b = 100;
 //   }
 // }
 
-//* Напиши скрипт, який підраховує суму всіх парних чисел, які знаходяться в діапазоні у змінних від min до max включно. 
+//* Напиши скрипт, який підраховує суму всіх парних чисел, які знаходяться в діапазоні у змінних від min до max включно.
 //*Наприклад, якщо min = 0, max = 5, і в ньому два парних числа 2, 4, то сума буде дорівнювати 6.
-const min = 0;
-const max = 5;
-let total = 0; // Змінна для зберігання суми
+// const min = 0;
+// const max = 5;
+// let total = 0; // Змінна для зберігання суми
 // for (let i = min; i <= max; i++) {
 //   if (i % 2 === 0) { // Перевіряємо, чи число парне
 //     total += i; // Додаємо парне число до суми
@@ -273,5 +273,3 @@ let total = 0; // Змінна для зберігання суми
 //   }
 // }
 // console.log(total); // 6 ** Виведе суму парних чисел у діапазоні від min до max
-
-
