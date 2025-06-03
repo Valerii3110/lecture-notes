@@ -60,19 +60,19 @@
 //   return a + b;
 
 //   }
-//   const addArrow = (...rest) => {
-//     return a + b;
-//   };
-//   console.log(addArrow(10, 20, 30));
+const addArrow = (...rest) => {
+  return a + b;
+};
+console.log(addArrow(10, 20, 30));
 
-// const addArrow = (a) => {
-//   return a + 20;
-// };
+const addArrow = (a) => {
+  return a + 20;
+};
 
-// console.log(addArrow(10));
+console.log(addArrow(10));
 
-// const addArrow = a => a + 20;
+const addArrow = (a) => a + 20;
 
-// console.log(addArrow(10));
+console.log(addArrow(10));
 
 // const addArrow = (a) => [a];

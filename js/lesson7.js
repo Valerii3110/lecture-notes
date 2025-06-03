@@ -14,13 +14,13 @@
 //? Властивості між собою розділяються комою.
 
 //* Приклад об'єкта:
-const playlist = {
-  name: "My playlist", //* -властивість об'єкту
-  rating: 5,
-  tracks: ["track-1", "track-2", "track-3"],
-  isFavorite: true,
-};
-console.log(playlist);
+// const playlist = {
+//   name: "My playlist", //* -властивість об'єкту
+//   rating: 5,
+//   tracks: ["track-1", "track-2", "track-3"],
+//   isFavorite: true,
+// };
+// console.log(playlist);
 
 //? Щоб отримати доступ до властивосте  й об'єкта, використовують крапкову нотацію або квадратні дужки.
 //* Доступ до властивостей об'єкта

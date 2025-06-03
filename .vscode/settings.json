@@ -13,7 +13,7 @@
   "editor.renderWhitespace": "all",
   "editor.renderControlCharacters": true,
   "editor.guides.indentation": true,
-  "editor.minimap.enabled": false,
+  "editor.minimap.enabled": true,
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
