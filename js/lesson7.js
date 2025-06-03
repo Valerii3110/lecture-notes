@@ -5,7 +5,7 @@
 //* Доступ до вкладених властивостей
 //* Додавання властивостей */
 
-const playlist = ['My playlist', 5, true];
+// const playlist = ['My playlist', 5, true];
 //? Oб'єкт - дає можливість зберегти до кожного значенння додати якусь описову властивість
 //? Об'єкти - це колекції властивостей, які складаються з ключів і значень.
 //? Ключі - це рядки, які використовуються для доступу до значень.
@@ -15,13 +15,12 @@ const playlist = ['My playlist', 5, true];
 
 //* Приклад об'єкта:
 const playlist = {
-  name: "My playlist",//* -властивість об'єкту
+  name: "My playlist", //* -властивість об'єкту
   rating: 5,
-  tracks:["track-1", "track-2", "track-3"],
+  tracks: ["track-1", "track-2", "track-3"],
   isFavorite: true,
 };
 console.log(playlist);
-
 
 //? Щоб отримати доступ до властивосте  й об'єкта, використовують крапкову нотацію або квадратні дужки.
 //* Доступ до властивостей об'єкта
@@ -42,16 +41,15 @@ console.log(playlist(tracks));
 //? user.location.country — звернення до властивості country в цьому об'єкті.
 //! Тобто «крапка» вказує наступну вкладеність.
 
-
 //! Значення властивості — це масив.
 //* Якщо значення властивості — це масив, то в нашому прикладі вище звернення до цього масиву буде: ****user.hobbies
 
-const hobbies = user.hobbies;
-console.log(hobbies); // ["swimming", "music", "sci-fi"]
+// const hobbies = user.hobbies;
+// console.log(hobbies); // ["swimming", "music", "sci-fi"]
 //*Отримати доступ до елементів масиву можна через квадратні дужки та індекс: user.hobbies[0];
 
-const firstHobby = user.hobbies[0];
-console.log(firstHobby); // "swimming"
+// const firstHobby = user.hobbies[0];
+// console.log(firstHobby); // "swimming"
 //* Також можна використовувати властивості й методи масиву, наприклад отримати значення його довжини з властивості length: user.hobbies.length;
 
 const numberOfHobbies = user.hobbies.length;
@@ -62,37 +60,37 @@ console.log(numberOfHobbies); // 3
 //* Схоже на звернення до елемента масиву з відмінністю. Відмінність полягає в тому, що в квадратних дужках зазначається не індекс елемента, а рядок з ключем (ім’ям властивості).
 //* Синтаксис «квадратних дужок» використовується значно рідше. Як правило, у випадках, коли ім'я властивості заздалегідь не відоме або воно зберігається у змінній і її поточне значення ми не знаємо, наприклад, як значення параметра функції, ябо надходить від користувача, ми не знаємо який ключ він хоче отримати з нашого об'єкту, саме в таких випадках ми використовуємо синтаксис квадратних дужок, в усіх інших випадках використовуєм синтаксис через крапку.
 
-const key = "rating"
-console.log(playlist["rating"]);//5
+const key = "rating";
+console.log(playlist["rating"]); //5
 
 //* На місце звернення буде повернуто значення властивості з таким ім'ям.
 //* Якщо в об'єкті відсутня властивість з таким ім'ям, на місце звернення повернеться undefined.
-console.log(playlist["lalala"]);//undefined
- 
-const book = {
-  title: "The Last Kingdom",
-  author: "Bernard Cornwell",
-  genres: ["historical prose", "adventure"],
-  isPublic: true,
-  rating: 8.38,
-};
+console.log(playlist["lalala"]); //undefined
 
-console.log(book.title); // "The Last Kingdom" 
-console.log(book["title"]); // "The Last Kingdom" 
+// const book = {
+//   title: "The Last Kingdom",
+//   author: "Bernard Cornwell",
+//   genres: ["historical prose", "adventure"],
+//   isPublic: true,
+//   rating: 8.38,
+// };
 
-console.log(book.genres); // ["historical prose", "adventure"]
-console.log(book["genres"]); // ["historical prose", "adventure"]
+// console.log(book.title); // "The Last Kingdom"
+// console.log(book["title"]); // "The Last Kingdom"
 
-const propKey = "author";
-console.log(book.propKey); // undefined
-console.log(book[propKey]); // "Bernard Cornwell"
+// console.log(book.genres); // ["historical prose", "adventure"]
+// console.log(book["genres"]); // ["historical prose", "adventure"]
+
+// const propKey = "author";
+// console.log(book.propKey); // undefined
+// console.log(book[propKey]); // "Bernard Cornwell"
 
 //! Зміна значення властивостей
 //* Після того як об'єкт створений, значення його властивостей можна змінити.
 
 //* Для цього необхідно звернутися до них за ключем, наприклад, «через крапку», і присвоїти нове значення.
-playlist.name = "New playlist"; // "New playlist"
- 
+// playlist.name = "New playlist"; // "New playlist"
+
 // const book = {
 //   title: "The Last Kingdom",
 //   author: "Bernard Cornwell",
@@ -123,61 +121,60 @@ playlist.name = "New playlist"; // "New playlist"
 // console.log(user.name); // "Henry Sibola"
 // console.log(user.age); // 25
 
-const obj = {
-  userName: "Alise",
-  skils: {
-    html: true,
-    css: true,
-    js: false
-  }
-  numbers; [10, 20, 30]
-}
+// const obj = {
+//   userName: "Alise",
+//   skils: {
+//     html: true,
+//     css: true,
+//     js: false
+//   }
+//   numbers; [10, 20, 30]
+// }
 
-console.log(obj.skils.css);
-console.log(obj.numbers[1]);
+// console.log(obj.skils.css);
+// console.log(obj.numbers[1]);
 
 //* Аналогічним чином ми можемо перезаписувати значення:
-obj.skils.js = true;
- //* Об'єкти
- //* Тип даних за посиланням 
- //* Масиви і функцції - це об'єкти
+// obj.skils.js = true;
+//* Об'єкти
+//* Тип даних за посиланням
+//* Масиви і функцції - це об'єкти
 
 //  const arr = [1, 2, 3];
 //  arr.lalala = "tototo";
-//  console.log(arr); 
- 
-function foo() {
-  console.log("lalala");
-  
-}
- foo.lalala = "tototo"
- console.dir(foo);// console.dir - дозволяє побачити властивості функції в консолі.
- 
- const a = [1, 2, 3];// http://mycomputer/arr1
- const b = a;// http://mycomputer/arr1
- console.log(a === b); //true масиви порівнюються за посиланням
- 
- const a = {x: 1, y: 2};// http://mycomputer/arr1
- const b = a;// http://mycomputer/arr1
+//  console.log(arr);
 
-console.log("a", a);// a>(x: 1, y: 2)
-console.log("b", b);// b>(x: 1, y: 2)
-console.log(a === b); //true обєкти  порівнюються за посиланням, аналогічно масивам
- 
-const a = {x: 1, y: 2}; // http://mycomputer/arr1
-const b = {x: 1, y: 2}; // http://mycomputer/arr2
-console.log(a === b);//false два одинакові обєкти не дорівнюють один одному, бо порінюються за посиланням. 
+// function foo() {
+//   console.log("lalala");
 
-const obj = {
-  userName: "Alise",
-  skils: {
-    html: true,
-    css: true,
-    js: false
-  }
-  numbers; [10, 20, 30]
-}
+// }
+//  foo.lalala = "tototo"
+//  console.dir(foo);// console.dir - дозволяє побачити властивості функції в консолі.
 
+//  const a = [1, 2, 3];// http://mycomputer/arr1
+//  const b = a;// http://mycomputer/arr1
+//  console.log(a === b); //true масиви порівнюються за посиланням
+
+//  const a = {x: 1, y: 2};// http://mycomputer/arr1
+//  const b = a;// http://mycomputer/arr1
+
+// console.log("a", a);// a>(x: 1, y: 2)
+// console.log("b", b);// b>(x: 1, y: 2)
+// console.log(a === b); //true обєкти  порівнюються за посиланням, аналогічно масивам
+
+// const a = {x: 1, y: 2}; // http://mycomputer/arr1
+// const b = {x: 1, y: 2}; // http://mycomputer/arr2
+// console.log(a === b);//false два одинакові обєкти не дорівнюють один одному, бо порінюються за посиланням.
+
+// const obj = {
+//   userName: "Alise",
+//   skils: {
+//     html: true,
+//     css: true,
+//     js: false
+//   }
+//   numbers; [10, 20, 30]
+// }
 
 //! Короткі властивості
 //! Обчислювальні властивості
@@ -186,14 +183,14 @@ const obj = {
 
 //* Раніше для цього необхідно було спочатку створити об'єкт, а потім додавати властивості через квадратні дужки, що не зовсім зручно.
 
-const userName = "Alice";
-const age: 25;
-const obj = {
-  userName: userName,
-  age: age,
-}
+// const userName = "Alice";
+// const age: 25;
+// const obj = {
+//   userName: userName,
+//   age: age,
+// }
 
-console.log(obj);// {userNme: "Alice", age: 25}
+// console.log(obj);// {userNme: "Alice", age: 25}
 
 //! Короткі властивості
 //* Якщо в  об'єкті ім'я ключа і ім'я змінної значенню якої присвоюється цей ключ, мають однакове ім'я, можемо скористатись коротким синтаксесом.
@@ -253,11 +250,10 @@ console.log(obj);// {userNme: "Alice", age: 25}
 //   console.log(key); // "good", "neutral", "bad"(ключі властивостей)
 //   console.log(feedback[key]); // 3, 5, 10
 //   console.log(feedback.key);// undefined тому що властивість key відсутня в обєкті feedback
-  
+
 //   total += feedback[key];// 3+5+10
 // }
 // console.log(total); // 18
-
 
 //* Глобальна сутність Object.
 
@@ -273,16 +269,15 @@ console.log(obj);// {userNme: "Alice", age: 25}
 // const values = Object.values(feedback);// Отримуємо масив значень об'єкта feedback
 
 // for(const item of values){
-//   console.log(item);//[3, 5, 10]-масив значень об'єкту 
+//   console.log(item);//[3, 5, 10]-масив значень об'єкту
 //   total += item;
-  
+
 // }
 // console.log(total); // 18
 
-
 // const animal = {
 //   legs: 4
-// } 
+// }
 // const dog = Object.create(animal); // Створюємо об'єкт dog, який наслідує властивості від animal
 // console.log(dog.legd); // 4, успадковане від animal
 
@@ -294,7 +289,7 @@ console.log(obj);// {userNme: "Alice", age: 25}
 //       //dog.hasOwenProperty("name") - чи належить цей ключ моему обєкту
 //   if (dog.hasOwnProperty(key)) {//.hasOwenProperty (name: "Patron")
 //     console.log(dog[key]);// "Patron"
-  
+
 //   }
 // }
 
@@ -303,7 +298,7 @@ console.log(obj);// {userNme: "Alice", age: 25}
 
 // for (const key of keys) {
 //   console.log(dog[key]); // Patron
-  
+
 // }
 
 //* Напиши скрипт, який для об'єкта user, послідовно:
@@ -312,91 +307,83 @@ console.log(obj);// {userNme: "Alice", age: 25}
 //* замінює значення premium на fale
 //* виводить вміст обєкту user у форматі ключ: значення використовуючи Object.keys та for...of
 
-const user = {
-  name: "Alice",
-  age: 20,
-  hobby: "html",
-  premium: true,
-}
+// const user = {
+//   name: "Alice",
+//   age: 20,
+//   hobby: "html",
+//   premium: true,
+// }
 
+//  user.mood.: "happy",
+//  user.hobby: "skydiving",
+//  user.premium: false,
 
- user.mood.: "happy",
- user.hobby: "skydiving",
- user.premium: false,
-
- console.log(user);//   name: "Alice",
+//  console.log(user);//   name: "Alice",
 //  age: 20,
 //  hobby: "skydaiving",
 //  mood.: "happy",
 //  premium: false,
-const keys = Object.keys(user);// ["name", "age", "hobby", "premium", "moodd"]
-for (const key of keys) {
-  console.log(`${key}: ${user[key]}`);//name: "Alice",
-  //  age: 20,
-  //  hobby: "skydaiving",
-  //  mood.: "happy",
-  //  premium: false,
-    
-}
+// const keys = Object.keys(user);// ["name", "age", "hobby", "premium", "moodd"]
+// for (const key of keys) {
+//   console.log(`${key}: ${user[key]}`);//name: "Alice",
+//   //  age: 20,
+//   //  hobby: "skydaiving",
+//   //  mood.: "happy",
+//   //  premium: false,
 
 //? якщо є декілька масивів
 
-const user = {
-  name: "Alice",
-  age: 20,
-  hobby: "html",
-  premium: true,
-}
+// const user = {
+//   name: "Alice",
+//   age: 20,
+//   hobby: "html",
+//   premium: true,
+// }
 
-const user1 = {
-  name: "Petya",
-  age: 25,
-  hobby: "htmlcss",
-  premium: true,
-}
+// const user1 = {
+//   name: "Petya",
+//   age: 25,
+//   hobby: "htmlcss",
+//   premium: true,
+// }
 
-function foo(obj) {
-  obj.mood = "happy",
-  obj.hobby = "skydaiving",
+// function foo(obj) {
+//   obj.mood = "happy",
+//   obj.hobby = "skydaiving",
 
-const keys = Object.keys(obj):
-for (const key of keys) {
-  console.log(`${key}: ${user[key]}`);//name: "Alice",
-  //  age: 20,
-  //  hobby: "skydaiving",
-  //  mood.: "happy",
-  //  premium: false,
-    
-}
-}
+// const keys = Object.keys(obj):
+// for (const key of keys) {
+//   console.log(`${key}: ${user[key]}`);//name: "Alice",
+//   //  age: 20,
+//   //  hobby: "skydaiving",
+//   //  mood.: "happy",
+//   //  premium: false,
 
-foo(user);
-foo(user1)
+// }
+// }
 
-//* У нас обєкт, де зберігаються зарплати нашої команди. Напишіть скрипт який робить підсумування всіх зарплат і зберіжіть результат у змінній sum. Якщо об'єкт salaries порожній, то результат має бути 0.
+// foo(user);
+// foo(user1)
 
-const salaries - {
-  Alice: 160,
-  Yura: 130,
-  Petya: 100
-}
+// //* У нас обєкт, де зберігаються зарплати нашої команди. Напишіть скрипт який робить підсумування всіх зарплат і зберіжіть результат у змінній sum. Якщо об'єкт salaries порожній, то результат має бути 0.
 
-function summa(obj) {
-  let sum = 0;
-  const velues = Object.velues(obj);
-  console.log(velues); // [160, 130, 100]
-   for(const velue of velues) {
-     sum += velue;
-   }
-  return sum;
+// const salaries - {
+//   Alice: 160,
+//   Yura: 130,
+//   Petya: 100
+// }
 
-}
+// function summa(obj) {
+//   let sum = 0;
+//   const velues = Object.velues(obj);
+//   console.log(velues); // [160, 130, 100]
+//    for(const velue of velues) {
+//      sum += velue;
+//    }
+//   return sum;
+
+// }
 
 // summa(salaries);
 // console.log(summa(salaries)); //390
 // document.body.innerHTML = summa(salaries)
-
-
-
-
-
