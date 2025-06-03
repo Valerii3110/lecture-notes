@@ -25,7 +25,7 @@
 //         //Rose
 //     if(item.name.toLowerCase() === userName.toLowerCase()){
 //     console.log(item);// (name: "Joye", online: true)
-  
+
 //     return item;
 //     }
 //   }
@@ -38,7 +38,7 @@
 //   const names = [];
 //   for(const lalala  of arr) {
 //     names.push(lalala.name)
-    
+
 //   }
 //   return names;
 // }
@@ -50,31 +50,31 @@
 //   for (const item of arr) {
 //     console.log(item.online);
 
-//     if (item.online === true) {//? === true 
+//     if (item.online === true) {//? === true
 //       online.push(item)
-      
+
 //     }
-    
+
 //   }
 
 // }
 // console.log(friends);
 
-//* Напиши функцію calcTotalPrice(stones, stoneName) яка приймає масив об'єктів та рядок з назвою каменю. Функція рахує і повертає загальну вартість каменів з таким ім'ям та кількістю з об'єкта 
+//* Напиши функцію calcTotalPrice(stones, stoneName) яка приймає масив об'єктів та рядок з назвою каменю. Функція рахує і повертає загальну вартість каменів з таким ім'ям та кількістю з об'єкта
 
 // const stones = [
 //   (name:"Смарагд", price:1300, quantity: 4)
-//   (name:"Діамант", price:2700, quantity: 3) 
-//   (name:"Сапфір", price: 400, quantity: 7) 
-//   (name:"Шебінь", price: 200, quantity: 2)  
-  
+//   (name:"Діамант", price:2700, quantity: 3)
+//   (name:"Сапфір", price: 400, quantity: 7)
+//   (name:"Шебінь", price: 200, quantity: 2)
+
 // ]
 // function calcTotalPrice(stones, stoneName) {
 //   let sum =0;
 //   for(const item fo stones) {
 //     if (item.name === stones) {
 //       return item.quantity * item.price;
-      
+
 //     }
 //   }
 
@@ -86,18 +86,18 @@
 
 // const stones = [
 //   (name:"Смарагд", price:1300, quantity: 4)
-//   (name:"Діамант", price:2700, quantity: 3) 
-//   (name:"Сапфір", price: 400, quantity: 7) 
+//   (name:"Діамант", price:2700, quantity: 3)
 //   (name:"Сапфір", price: 400, quantity: 7)
-//   (name:"Шебінь", price: 200, quantity: 2)  
-  
+//   (name:"Сапфір", price: 400, quantity: 7)
+//   (name:"Шебінь", price: 200, quantity: 2)
+
 // ]
 // function calcTotalPrice(stones, stoneName) {
 //   let sum =0;
 //   for(const item fo stones) {
 //     if (item.name === stones) {
 //       sum += item.quntity * item.price
-      
+
 //     }
 //   }
 //   return sum;
@@ -118,7 +118,7 @@
 //   rating: 5,
 //   tracks: ["track-1", "track-2", "track-3"],
 //   chengenName(newName) {
-//     // console.log(this); // this = 
+//     // console.log(this); // this =
 //     this.name = newName;
 //   }
 //   addTracks(newTrak) {
@@ -130,7 +130,7 @@
 //   getAllNames() {
 //     return this.name;
 //   }
-// } 
+// }
 
 //! Тобто ми в методах нашого об'єкту через ключове слово this отримуємо доступ до об'єкту, який в момент мого виклику обєкту стояв зліва від нього. В this буде те що стоїть зліва від функції в момент її виклику.
 
@@ -153,7 +153,6 @@
 // // console.log("playlist", playlist);
 // // console.log("playlist2", playlist2);
 
-
 // const obj = {x:1};
 // const obj1 = obj;
 // obj.x = 100;
@@ -161,13 +160,12 @@
 
 // function foo(params) {
 //   return "lalala"
-  
+
 // }
 // foo.hello = "Super Puper"
 // console.dir(foo);
 
 // const myFunction = foo;
-
 
 //* Синтаксис spred і rest
 //* Залишкові параметри
@@ -175,10 +173,10 @@
 //* Входження параметрів
 //* Створення масиву
 //* Створення об'єкту
-*//
+//
 // function foo(...rest) {
 //   console.log(rest);//[1, 2, 3]
-  
+
 // }
 // foo(1, 2, 3);
 // foo(10, 20, 3, 4, 5)
@@ -188,15 +186,15 @@
 // function foo(a, b, ...rest) {
 //   console.log(a, b);// 10, 20
 //   console.log(rest);//[3, 4, 5]
-  
+
 // }
 // foo(1, 2, 3);
 // foo(10, 20, 3, 4, 5)
 
 // function foo(...args) {
-  
+
 //   console.log(args);//[(x:1, b: 2)]
-  
+
 // }
 // foo((x:1, b: 2));
 
@@ -223,14 +221,13 @@
 // //! Під час виклику методу (функції) (...) - -spred оператор
 // console.log(Math.max(...temps));//29
 
-
 // //* Створення масиву за посиланням
 // //        my-pc/1   my-pc/2
 // const a = [(x: 1), (y: 2)];
 //  const b = [...a];// [my-pc/1, my-pc/2] spred оператор робить не глибоку копію з нескладними типами даних
 
 //  a[0].x = 100;
- 
+
 // console.log("a", a);
 // console.log("b", b);
 
@@ -260,7 +257,7 @@
 //   hideSidebar: false,
 // }
 
-// const userName = { 
+// const userName = {
 //   showoNotification: false,
 //   hideSidebar: true,
 // }
@@ -279,10 +276,6 @@
 //   WITHDRAW: "withdraw",
 // };
 
-
-
-
-
 /*
  * Кожна транзакція це об'єкт із властивостями: id, type та amount
  */
@@ -294,8 +287,6 @@
 //   // Історія транзакцій
 //   transactions: [],
 
-
-
 //   /*
 //    * Метод створює та повертає об'єкт транзакції.
 //    * Приймає суму та тип транзакції.
@@ -305,25 +296,17 @@
 //     return obj;
 //   },
 
-
-
-
-
 //   /*
 //    * Метод, що відповідає за додавання суми до балансу.
 //    * Приймає суму транзакції.
 //    * Викликає createTransaction для створення об'єкта транзакції
 //    * після чого додає його до історії транзакцій
-//    */ 
+//    */
 //   deposit(amount) {
 //     this.balance += amount;
 //     const transaction = this.createTransaction(amount, Transaction.DEPOSIT);
 //     this.transactions.push(transaction);
 //   },
-
-
-
-
 
 //   /*
 //    * Метод, що відповідає за зняття суми з балансу.
@@ -345,20 +328,12 @@
 //     this.transactions.push(transaction);
 //   },
 
-
-
-
-
 //   /*
 //    * Метод повертає поточний баланс
 //    */
 //   getBalance() {
 //     return this.balance;
 //   },
-
-
-
-
 
 //   /*
 //    * Метод шукає та повертає об'єкт транзакції по id
@@ -372,10 +347,6 @@
 //     }
 //     return "Not found";
 //   },
-
-
-
-
 
 //   /*
 //    * Метод повертає кількість коштів
@@ -393,7 +364,6 @@
 //   },
 // };
 
-  
 // account.deposit(200);
 // account.deposit(400);
 
