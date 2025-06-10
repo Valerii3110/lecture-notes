@@ -368,12 +368,183 @@
 2.Стрілочні функції ігнорують наявність суворого режиму. Тому в глобальному контексті у стрілці завжди this посилається на об'єкт window.
 3.Неможливо змінити значення this усередині стрілочних функцій після її оголошення. Методи call, apply і bind не впливають на значення this у стрілках.*/
 
-const a = () => {
-  console.log(this);
-};
+// const a = () => {
+//   console.log(this);
+// };
 
-function b() {
-  a();
-}
+// function b() {
+//   a();
+// }
 
-b.call({ user: "Mango" });
+// b.call({ user: "Mango" }); // window у прикладі оголошена стрілочна функція a, яка логує свій this. Функція a була створена в глобальному контексті, де this вказує на window. Хоча ми намагаємось змінити контекст функції b за допомогою call, стрілочна функція a ігнорує цей контекст. Тому при виклику a виведе window.
+
+/**Алгоритм визначення this
+
+
+
+Ключове слово this — це одна з найзаплутаніших концепцій для новачка.
+
+Новачки часто підставляють this методом наукового тику доти, доки скрипт не спрацює.
+
+
+
+Але все стає значно простішим, коли є простий алгоритм визначення значення this.
+
+
+
+Крок 1
+
+Це стрілочна функція?
+
+Якщо відповідь Так, значення this те саме, що у this у зовнішній області видимості
+Якщо відповідь Ні, переходь на Крок 2
+
+
+Крок 2
+
+Чи використовуються методи call, apply або bind?
+
+Якщо відповідь Так, значення this — це той самий об’єкт, що передали при їх виклику
+Якщо відповідь Ні, переходь на Крок 3
+
+
+Крок 3
+
+Функція викликається як метод об’єкта object.method?
+
+Якщо відповідь Так, значення this — це об’єкт ліворуч від крапки
+Якщо відповідь Ні, переходь на Крок 4
+
+
+Крок 4
+
+Скрипт виконується в суворому режимі?
+
+Якщо відповідь Так, значення this — undefined
+Якщо відповідь Ні, значення this — window
+
+ */
+
+/**Прототипи
+ * Отже, прототип — це резервне сховище властивостей і методів об'єкта, яке автоматично використовується під час їх пошуку.
+ Властивість, яка зберігає посилання на прототип, називається [[Prototype]].*/
+
+/**Метод Object.create(obj) створює і повертає новий об'єкт, зв'язуючи його з об'єктом obj.
+ * Метод Object.create(obj) створює новий об'єкт і встановлює йому прототипом obj. Такий новий об'єкт матиме прототип obj і буде успадковувати його властивості. */
+
+// const animal = {
+//   legs: 4,
+// };
+
+// const dog = Object.create(animal);
+// dog.name = "Mango";
+
+// console.log(dog); // { name: "Mango", [[Prototype]]: animal }
+// console.log(dog.name); // "Mango"
+// console.log(dog.legs); // 4
+
+// const parent = {
+//   name: "Stacey",
+//   surname: "Moore",
+//   age: 54,
+//   heritage: "Irish",
+// };
+// const child = Object.create(parent);
+// child.name = "Jason";
+// child.age = 27;
+
+// // console.log(parent);
+// // console.log(child);
+// console.log(parent.isPrototypeOf(child));//true
+
+// const customer = {
+//   username: "Jacob",
+// };
+
+// const animal = {
+//   legs: 4,
+// };
+
+// const dog = Object.create(animal);
+// dog.name = "Mango";
+
+// console.log(dog); // { name: "Mango", [[Prototype]]: animal }
+
+// console.log(animal.isPrototypeOf(dog)); // true
+// console.log(dog.isPrototypeOf(animal)); // false
+// console.log(customer.isPrototypeOf(dog)); // false
+// console.log(dog.hasOwnProperty("name")); // true
+// console.log(dog.hasOwnProperty("legs")); // false
+
+/**Власні і невласні властивості */
+/**Методи Object.keys(obj) і Object.values(obj) повертають масив тільки власних ключів або значень тільки власних властивостей об'єкта obj, без необхідності додаткових перевірок. Через це на практиці використовують саме їх із циклом for...of, замість for...in і hasOwnProperty. */
+// const animal = { legs: 4 };
+// const dog = Object.create(animal);
+// dog.name = "Mango";
+
+// console.log(Object.keys(dog)); // ["name"]
+// console.log(Object.values(dog)); // ["Mango"]
+// for (const key in dog) {
+//   if (dog.hasOwnProperty(key)) {
+//     console.log(key); // "name"
+//   }
+// }
+
+/**Ланцюжки прототипів
+
+Об'єкт, який виступає прототипом для іншого об'єкта, також може мати свій прототип. Отже, існують ланцюжки прототипів. */
+// const objC = { c: "objC prop" };
+
+// const objB = Object.create(objC);
+// objB.b = "objB prop";
+
+// const objA = Object.create(objB);
+// objA.a = "objA prop";
+
+// console.log(objA); // { a: "objA prop", [[Prototype]]: objB }
+// console.log(objB); // { b: "objB prop", [[Prototype]]: objC }
+// console.log(objC); // { c: "objC prop", [[Prototype]]: Object }
+
+/**Пошук властивостей відбувається до першого збігу. Інтерпретатор шукає властивість за ім'ям в об'єкті:
+- Якщо інтерпретатор не знаходить власну властивість, то звертається до властивості [[Prototype]], тобто переходить за посиланням до об'єкта-прототипу, а потім — до прототипу прототипу за ланцюжком.
+- Якщо інтерпретатор доходить до кінця ланцюжка і не знаходить властивості з таким ім'ям, то повертається undefined. */
+// console.log(objA.hasOwnProperty("a")); // true
+// console.log(objA.a); // "objA prop"
+
+// console.log(objA.hasOwnProperty("b")); // false
+// console.log(objA.b); // "objB prop"
+
+// console.log(objA.hasOwnProperty("c")); // false
+// console.log(objA.c); // "objC prop"
+
+// console.log(objA.hasOwnProperty("x")); // false
+// console.log(objA.x); // undefined
+
+// const apartment = {
+//   rooms: 4,
+//   floor: 2,
+//   taxFree: false,
+// };
+
+// const condo = Object.create(apartment);
+// condo.rooms = 3;
+// console.log(condo.rooms); //3  Значення при зверненні condo.rooms буде 3, оскільки об'єкт condo має власну властивість rooms, і пошук значення цієї властивості в прототипі не буде здійснюватись.
+
+// const ancestor = {
+//   name: "Paul",
+//   age: 83,
+//   surname: "Dawson",
+//   heritage: "Irish",
+// };
+
+// const parent = Object.create(ancestor);
+// parent.name = "Stacey";
+// parent.surname = "Moore";
+// parent.age = 54;
+
+// const child = Object.create(parent);
+// child.name = "Jason";
+// child.age = 27;
+
+// console.log(child);
+// console.log(child.heritage); // => "Irish" — успадковано через ancestor
