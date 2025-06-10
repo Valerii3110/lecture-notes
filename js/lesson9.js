@@ -460,3 +460,17 @@
 // };
 
 // console.table(update(players, playerId));
+
+/**Метод flatMap
+ * Розгортає масив до першого рівня вкладеності.
+ */
+// const tweets = [
+//   { id: "000", likes: 5, tags: ["js", "nodejs"] },
+//   { id: "001", likes: 2, tags: ["html", "css"] },
+//   { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+//   { id: "003", likes: 8, tags: ["css", "react"] },
+//   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+// ];
+
+// const tgs = tweets.flatMap((item) => item.tags);
+// console.log(tgs); // ['js', 'nodejs', 'html', 'css', 'html', 'js', 'nodejs', 'css', 'react', 'js', 'nodejs', 'react']
