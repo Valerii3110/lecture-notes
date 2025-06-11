@@ -1,49 +1,161 @@
-// const pizzaPalace = {
-//   pizzas: ["Supercheese", "Smoked", "Four meats"],
-//   checkPizza(pizzaName) {
-//     return pizzas.includes(pizzaName);
-//   },
-//   order(pizzaName) {
-//     const isPizzaAvailable = checkPizza(pizzaName);
+/**Контекст виконання функцій
+ *
+ * Ключове слово this
+ * Глобальний контекст
+ * Контекст методу об'єкту
+ *
+ */
 
-//     if (!isPizzaAvailable) {
-//       return `Sorry, there is no pizza named «${pizzaName}»`;
-//     }
-
-//     return `Order accepted, preparing «${pizzaName}» pizza`;
-//   },
-// };
-
-// console.log(pizzaPalace);
+/** Глобальний контекст */
 
 // function foo() {
 //   console.log(this);
 // }
+// foo(); /** В момент виклику функції потрапляє або ініціалізується контекст   this*/
+/** При виклику функції в несуворому режимі без дерективи "use strict" то посилання this будеина глобальний об'єкт віндовс */
 
-// foo(); // window
+/**Коли функція викликається у суворому режимі  при дерективі "use strict" будемо отримувати undefindet. Що потрапляє в this те що стоїть зліва у функції */
 
 // "use strict";
 
 // function foo() {
-//   console.log(this);
+//   console.log(this);//undefindet
 // }
+// foo();
 
-// foo(); // undefined
+/**Контекст методу об'єку */
 
 // const user = {
-//   username: "Poly",
+//   userName: "Alict",
+//   showThis() {
+//     console.log(this); //метод обєкту що буде this
+//   },
+// };
+// showThis(); // видає помилку
+
+/** showThis() {
+    console.log(this);
+  },  цей метод (функція ) був створений  в тілі обєкту user*/
+
+// const user = {
+//   userName: "Alict",
+//   showThis() {
+//     console.log(this); //метод обєкту що буде this
+//   },
+// };
+// user.showThis(); // {userName: 'Alict', showThis: ƒ} this -обєкт в  контесті якого викликаний метод, до якого ми звертаємось
+
+/** Властивості стрілочних функцій */
+// const user = {
+//   userName: "Alict",
+//   showThis: () => {
+//     console.log(this); //Window {window: Window, self: Window, document: document, location: Location, customElements: CustomElementRegistry, …
+//   },
+// };
+// user.showThis();
+/** 1 Стрілочна функція отримує контекст (this) не в момент свого виклику а в момент створення
+ * 2 Контекст (this) вона отримує з батьківського обєкту
+ */
+// const user = {
+//   userName: "Alict",
 //   showThis() {
 //     console.log(this);
+//     const foo = () => {
+//       console.log("foo", this); //foo >{userName: 'Alict', showThis: ƒ}
+//     };
+//     foo();
+//   },
+// };
+// user.showThis(); //{userName: 'Alict', showThis: ƒ}
+/**Стрылочні функції не використовують як методи обєкту тому що вини зберігають обєкт на моменті х створенння а не в момент їх виклику */
+/** Суворий режим не впливає на стрілочні функції */
+
+/**Контекст методу обєкту але оголошений як зовнішня функція*/
+
+// function showThis() {
+//   console.log("this", this); //this Window {window: Window, self: Window, document: document, location: Location, customElements: CustomElementRegistry, …}
+// }
+// showThis();
+
+// const obj = {
+//   userName: "Alice", // ✅ правильний синтаксис: ключ: значення
+// console.log("this", this);
+// console.log("userName", this.userName);
+// };
+// console.log(obj);// {userName: "Alice"}
+
+// obj.showUserThis = showThis;
+
+// console.log(obj.showUserThis); //ƒ showThis() {console.log("this", this); посилання функції
+
+// obj.showUserThis(); //  {userName: 'Alice', showUserThis: ƒ} виклик методу (функції), this туди потрапляє контекстомобєкт що викликав цей методб, те що знаходиться зліва від крапки (обєкт  obj)
+
+/**Виклик без контексту але оголошений як метод обєкту */
+// const user = {
+//   userName: "Petya",
+//   showThis() {
+//     console.log("this", this); //{userName: 'Petya', showThis: ƒ}
+//     console.log("userName", this.userName);
+
+//   },
+// };
+// //user.showThis();
+// const foo = user.showThis;
+// console.log(foo); //ƒ showThis() {  console.log("this", this); //{userName: 'Petya', showThis: ƒ}
+// foo(); // Window {window: Window, self: Window, document: document, location: Location, customElements: CustomElementRegistry, …} коли викликаємо функцію без привязки до обєкту в несуворому режимі отримуємо посилання на глобальний обєкт віндов
+
+// const user = {
+//   userName: "Petya",
+//   showThis() {
+//     console.log("this", this); //{userName: 'Petya', showThis: ƒ}
+//     console.log("userName", this.userName); // в суворому режимі -this undefined,  в несуворому режимі userName undefined
+//   },
+// };
+// //user.showThis();
+// const foo = user.showThis;
+// console.log(foo);
+// foo();
+
+/**Контекст у callback-функції */
+// const user = {
+//   userName: "Petya",
+//   showThis() {
+//     console.log("this", this);
 //   },
 // };
 
-// user.showThis(); // {username: "Poly", showThis: ƒ}
-
-// "use strict";
-
-// function showThis() {
-//   console.log("this in showThis: ", this);
+// function foo(callback) {
+//   console.log(callback); //ƒ showThis() {console.log("this", this);}
+//   callback(); // this Window {window: Window, self: Window, document: document, location: Location, customElements: CustomElementRegistry, …} Методи обєкту втрачають свій контекст коли передаються як коллбек функції
 // }
+// foo(user.showThis);
+// foo(() => console.log("lalala"));
+
+// function foo() {
+//   console.log(this.lalala); //undefined
+// }
+// foo();
+
+// const user = {
+//   userName: "Alice",
+//   showThis() {
+//     console.log(this); //{userName: 'Alice', showThis: ƒ, showName: ƒ}
+//   },
+//   showName() {
+//     console.log(this.userName);
+//   },
+// };
+// // user.showThis();
+
+// // const foo = user.showThis;//undefined
+// const foo1 = user.showName;//undefined
+
+// foo1();
+
+// const obj = {
+//   name: "Petya",
+// };
+// console.log(obj.age); //undefined;
 
 // // Викликаємо у глобальному контексті
 // showThis(); // "this in showThis: undefined"
@@ -99,6 +211,8 @@
 
 // update("Lord Of The Rings");
 // console.log(this); //Window {window: Window, self: Window, document: document, location: Location, customElements: CustomElementRegistry, …}
+
+/**  */
 
 // Метод call дозволяє викликати функцію в контексті об'єкта, навіть якщо функція не є методом цього об'єкта, а також передає функції певні аргументи.
 
@@ -548,3 +662,168 @@
 
 // console.log(child);
 // console.log(child.heritage); // => "Irish" — успадковано через ancestor
+
+/**приклади */
+// function foo() {
+//   console.log(this.lalala); // this → глобальний об’єкт → lalala не існує → undefined
+// }
+// foo(); // undefined
+
+// const user = {
+//   userName: "Alice",
+
+//   showThis() {
+//     console.log(this); // this → user
+//   },
+
+//   showName() {
+//     console.log(this.userName); // this → user → Alice
+//   },
+// };
+
+// user.showThis(); // this → user, виведе сам об'єкт
+// const fooFunc = user.showThis;
+// const foo1Func = user.showName;
+
+// fooFunc(); // this → глобальний об'єкт або undefined у strict mode
+// foo1Func(); // this → глобальний об'єкт або undefined → помилка, бо this.userName = undefined
+
+// const user = {
+//   name: "Alice",
+//   sayHi() {
+//     console.log(this.name);
+//   },
+// };
+
+// user.sayHi();
+
+// const stonesShop = {
+//   stones: [
+//     { name: "Emerald", price: 1300, quantity: 4 },
+//     { name: "Diamond", price: 2700, quantity: 3 },
+//     { name: "Sapphire", price: 400, quantity: 7 },
+//     { name: "Ruby", price: 800, quantity: 2 },
+//   ],
+//   calcTotalPrice(stoneName) {
+//     console.log(this); //{stones: Array(4), calcTotalPrice: ƒ}
+
+//     const stone = this.stones.find((stone) => stone.name === stoneName);
+//     if (!stone) {
+//       return `${stoneName} not found`;
+//     }
+//     return stone ? stone.price * stone.quantity : 0;
+//   },
+// };
+
+// // Приклад використання:
+// console.log(stonesShop.calcTotalPrice("Emerald")); // 5200
+// console.log(stonesShop.calcTotalPrice("Sapphire")); //2800
+// console.log(stonesShop.calcTotalPrice("Diamond")); // 8100
+// console.log(stonesShop.calcTotalPrice("Topaz")); // Topaz not found
+
+// function showThis(a, b) {
+//   console.log(a, b);
+
+//   console.log("this", this);
+// }
+// const obj = {
+//   a: 5,
+//   b: 10,
+// };
+// const obj2 = {
+//   a: 50,
+//   b: 100,
+// };
+// showThis.call(obj); //{a: 5, b: 10}
+// showThis.call(obj2); //{a: 50, b: 100}
+// showThis.call(obj, "Alice", 2);
+// showThis.call(obj, "Alice", 2, [1, 2, 3]);
+// showThis.apply(obj, ["Alice", 2, [1, 2, 3]]);
+
+// function changeColor(paramsnewColor) {
+//   console.log("this", this);
+//   this.color = newColor;
+// }
+// const hat = {
+//   color: "black",
+// };
+
+// const sweater = {
+//   color: "green",
+// };
+// // chengeColor.call(hat, "red");
+// // console.log(hat);
+// chengeColor.apply(sweater, ["blue"]);
+// console.log(sweater);
+
+// const changeHatColor = changeColor.bind(hat);
+// const changeHatColor = changeColor(newColor) {
+// hat.color = newColor;
+// }
+// changeHatColor("yellow");
+// console.log(hat);
+
+// Наше завдання написати програмне забезпечення для автомобіля, а саме натискання кнопок cruiseControle з методами accelerate та decrease
+
+// Приклад використання:
+// cruiseControle.accelerate(); // Автомобіль Audi має швидкість 10
+// cruiseControle.accelerate(); // Автомобіль Audi має швидкість 20
+// cruiseControle.decrease(); // Автомобіль Audi має швидкість 10
+// cruiseControle.decrease(); // Автомобіль Audi має швидкість 0
+
+// const cruiseControl = {
+//   speed: 0,
+//   brand: "Audi",
+//   accelerate() {
+//     this.speed += 10;
+//     console.log(`Автомобіль ${this.brand} має швидкість ${this.speed}`);
+//   },
+//   decrease() {
+//     if (this.speed <= 0) {
+//       console.log("Авто зупинилось");
+//       return;
+//     }
+
+//     this.speed -= 10;
+//     console.log(`Автомобіль ${this.brand} гальмує ${this.speed}`);
+//   },
+// };
+
+// cruiseControl.accelerate();
+// cruiseControl.accelerate();
+
+// cruiseControl.decrease();
+// cruiseControl.decrease();
+// cruiseControl.decrease();
+
+// console.log(cruiseControl);
+
+// Потрібно створити функціонал для контролю швидкості прокатних авто.
+// Створіть функцію яка буде приймати 1 параметр (максимально дозволену швидкість)
+// та виводити повідомлення, чи ми рухаємось з безпечною швидкістю чи перевищуємо, функція має опрацьовувати об'єкт автомобіля як this
+
+const SPEED = 60;
+
+const bmw = {
+  brand: "Bmw",
+  speed: 40,
+};
+
+const audi = {
+  brand: "Audi",
+  speed: 70,
+};
+
+function speedSensor(maxSpeed) {
+  // if(this.speed <= maxSpeed) {
+  //     return `Автомобіль ${this.brand} рухаєтсяь з безпечною швидкісю`
+  // }
+
+  // return `${this.brand} перевищує швидкість`;
+  return this.speed <= maxSpeed
+    ? `Автомобіль ${this.brand} рухаєтсяь з безпечною швидкісю`
+    : `${this.brand} перевищує швидкість`;
+}
+
+console.log(speedSensor.call(bmw, SPEED));
+console.log(speedSensor.call(audi, SPEED));
