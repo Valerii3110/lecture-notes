@@ -802,28 +802,28 @@
 // Створіть функцію яка буде приймати 1 параметр (максимально дозволену швидкість)
 // та виводити повідомлення, чи ми рухаємось з безпечною швидкістю чи перевищуємо, функція має опрацьовувати об'єкт автомобіля як this
 
-const SPEED = 60;
+// const SPEED = 60;
 
-const bmw = {
-  brand: "Bmw",
-  speed: 40,
-};
+// const bmw = {
+//   brand: "Bmw",
+//   speed: 40,
+// };
 
-const audi = {
-  brand: "Audi",
-  speed: 70,
-};
+// const audi = {
+//   brand: "Audi",
+//   speed: 70,
+// };
 
-function speedSensor(maxSpeed) {
-  // if(this.speed <= maxSpeed) {
-  //     return `Автомобіль ${this.brand} рухаєтсяь з безпечною швидкісю`
-  // }
+// function speedSensor(maxSpeed) {
+//   // if(this.speed <= maxSpeed) {
+//   //     return `Автомобіль ${this.brand} рухаєтсяь з безпечною швидкісю`
+//   // }
 
-  // return `${this.brand} перевищує швидкість`;
-  return this.speed <= maxSpeed
-    ? `Автомобіль ${this.brand} рухаєтсяь з безпечною швидкісю`
-    : `${this.brand} перевищує швидкість`;
-}
+//   // return `${this.brand} перевищує швидкість`;
+//   return this.speed <= maxSpeed
+//     ? `Автомобіль ${this.brand} рухаєтсяь з безпечною швидкісю`
+//     : `${this.brand} перевищує швидкість`;
+// }
 
-console.log(speedSensor.call(bmw, SPEED));
-console.log(speedSensor.call(audi, SPEED));
+// console.log(speedSensor.call(bmw, SPEED));
+// console.log(speedSensor.call(audi, SPEED));
