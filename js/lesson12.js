@@ -525,3 +525,99 @@
 
 // console.log(mango.email); // "mango@mail.com"
 // console.log(mango.access); // "superuser"
+
+/**Методи дочірнього класу
+
+Дочірній клас може використовувати методи та властивості батьківського класу. Крім цього, у дочірньому класі можна оголошувати методи, які будуть доступні тільки його екземплярам. */
+
+// Уявімо, що вище є оголошення класу User
+// class User {
+//   #email;
+
+//   constructor(email) {
+//     this.#email = email;
+//   }
+
+//   get email() {
+//     return this.#email;
+//   }
+
+//   set email(newEmail) {
+//     this.#email = newEmail;
+//   }
+// }
+// class ContentEditor extends User {
+//   constructor(params) {
+//     super(params.email);
+//     this.posts = params.posts;
+//   }
+
+//   addPost(post) {
+//     this.posts.push(post);
+//   }
+// }
+
+// const editor = new ContentEditor({
+//   email: "mango@mail.com",
+//   posts: [],
+// });
+
+// console.log(editor); // { #email: "mango@mail.com", posts: [], addPost: f }
+
+// editor.addPost("post-1");
+// editor.addPost("post-2");
+// console.log(editor.posts); // ['post-1', 'post-2']
+/**
+User — це базовий клас, який має приватну властивість #email.
+ContentEditor розширює клас User і має власну властивість posts. Клас ContentEditor також має метод addPost, який дозволяє додавати нові повідомлення до posts.
+
+
+Метод addPost — це метод дочірнього класу ContentEditor . Він буде доступний тільки екземплярам ContentEditor */
+
+class User {
+  email;
+
+  constructor(email) {
+    this.email = email;
+  }
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+class Admin extends User {
+  static role = {
+    BASIC: "basic",
+    SUPERUSER: "superuser",
+  };
+
+  constructor(params) {
+    super(params.email);
+    this.access = params.access;
+    this.blacklistedEmails = [];
+  }
+
+  blacklist(email) {
+    this.blacklistedEmails.push(email);
+  }
+  isBlacklisted(email) {
+    return this.blacklistedEmails.includes(email);
+  }
+}
+
+const mango = new Admin({
+  email: "mango@mail.com",
+  access: Admin.role.SUPERUSER,
+});
+
+console.log(mango.email); // "mango@mail.com"
+console.log(mango.access); // "superuser"
+
+mango.blacklist("poly@mail.com");
+console.log(mango.blacklistedEmails); // ["poly@mail.com"]
+console.log(mango.isBlacklisted("mango@mail.com")); // false
+console.log(mango.isBlacklisted("poly@mail.com")); // true
