@@ -624,52 +624,79 @@ ContentEditor розширює клас User і має власну власти
 
 //! Класи
 
-class Car {
-  static qty = 0;
-  static increment() {
-    Car.qty += 1;
-  }
-  #price;
-  constructor(obj) {
-    this.brand = obj.brand;
-    this.model = obj.model;
-    this.#price = obj.price;
-    Car.increment();
-  }
-  getPrice() {
-    return this.#price;
-  }
-  changePrice(newPrice) {
-    this.#price = newPrice;
-  }
-  get price() {
-    return this.#price;
-  }
-  set price(newPrice) {
-    if (this.checkTypeof(newPrice, "number")) {
-      console.log("Ooops");
+// class Car {
+//   static qty = 0;
+//   static increment() {
+//     Car.qty += 1;
+//   }
+//   #price;
+//   constructor(obj) {
+//     this.brand = obj.brand;
+//     this.model = obj.model;
+//     this.#price = obj.price;
+//     Car.increment();
+//   }
+//   getPrice() {
+//     return this.#price;
+//   }
+//   changePrice(newPrice) {
+//     this.#price = newPrice;
+//   }
+//   get price() {
+//     return this.#price;
+//   }
+//   set price(newPrice) {
+//     if (this.checkTypeof(newPrice, "number")) {
+//       this.#price += newPrice;
+//       return;
+//     }
+//     console.log("Ooops");
+//   }
+//   #checkType(data, type) {
+//     if (typeof data !== type) {
+//       return false;
+//     }
+//     return true;
+//   }
+// }
 
-      return;
-    }
-    this.#price += newPrice;
-  }
-  #checkType(data, type) {
-    if (typeof data !== type) {
-      return true;
-    }
-    return false;
-  }
-}
-
-const bmw = new Car({ brand: "BMW", model: "X5", price: 70000 }); // bmw.constructor()
+// const bmw = new Car({ brand: "BMW", model: "X5", price: 70000 }); // bmw.constructor()
 // const audi = new Car({ brand: "AUDI", model: "Q7", price: 50000 }); // bmw.constructor()
 // console.log("bmw", bmw);
 // bmw.price = 5000;
 // console.log(bmw.price);
 
 // bmw.changePrice(80000);
-console.log(bmw.getPrice());
+// console.log(bmw.getPrice());
 
 // // console.log("audi", audi);
 
 // console.log(audi.getPrice());
+
+//**Наслідування класів */
+
+// class Hero {
+//   constructor(obj) {
+//     this.name = obj.name;
+//     this.xp = obj.xp;
+//   }
+//   gainXp(amount) {
+//     console.log(`${this.name} recevid ${amount}`);
+//     this.xp += amount;
+//   }
+// }
+// class Warrior extends Hero {
+//   constructor(obj){
+//     super({
+//       name: obj.name;
+//       xp: obj.xp
+//     })
+//     this.weapon = obj.weapon
+//   }
+//   attack(amount) {
+//     console.log();
+
+//   }
+// }
+
+// const arthas = new Warrior({ name: "Arthas", xp})
