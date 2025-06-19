@@ -377,3 +377,9 @@ containerWithHTML.insertAdjacentHTML("beforeend", "<p>New HTML Content at End</p
 containerWithHTML.insertAdjacentHTML("beforebegin", "<p>New HTML Content Before</p>"); // вставка нового HTML вмісту перед іншим елементом з використанням insertAdjacentHTML
 //* Вставка розмітки після іншого елемента з використанням insertAdjacentHTML
 containerWithHTML.insertAdjacentHTML("afterend", "<p>New HTML Content After</p>"); // вставка нового HTML вмісту після іншого елемента з використанням insertAdjacentHTML
+//* Властивість insertAdjacentElement
+containerWithHTML.insertAdjacentElement("beforeend", newItemEl); // вставка нового елемента в кінець контейнера з використанням insertAdjacentElement
+//* Властивість insertAdjacentText
+containerWithHTML.insertAdjacentText("beforeend", "New Text Content"); // вставка нового текстового вмісту в кінець контейнера з використанням insertAdjacentText
+//* Властивість insertAdjacentHTML з просторовим іменем
+containerWithHTML.insertAdjacentHTML("beforeend", "<p>New HTML Content with Namespace</p>"); // вставка нового HTML вмісту з просторовим іменем в кінець контейнера з використанням insertAdjacentHTML
