@@ -1,10 +1,8 @@
 //! Контекст виконання функцій
- 
- //* Ключове слово this
- //* Глобальний контекст
- //*  Контекст методу об'єкту
- *
- */
+
+//* Ключове слово this
+//* Глобальний контекст
+//*  Контекст методу об'єкту
 
 //! Глобальний контекст */
 
@@ -55,7 +53,7 @@
 // user.showThis();
 //! 1 Стрілочна функція отримує контекст (this) не в момент свого виклику а в момент створення
 //! 2 Контекст (this) вона отримує з батьківського обєкту
- 
+
 // const user = {
 //   userName: "Alict",
 //   showThis() {
@@ -80,7 +78,7 @@
 // showThis();
 
 // const obj = {
-//   userName: "Alice", // ✅ правильний синтаксис: ключ: значення
+//   userName: "Alice", //* ✅ правильний синтаксис: ключ: значення
 // console.log("this", this);
 // console.log("userName", this.userName);
 // };
@@ -88,29 +86,29 @@
 
 // obj.showUserThis = showThis;
 
-// console.log(obj.showUserThis); //ƒ showThis() {console.log("this", this); посилання функції
+// console.log(obj.showUserThis); //*ƒ showThis() {console.log("this", this); посилання функції
 
-// obj.showUserThis(); //  {userName: 'Alice', showUserThis: ƒ} виклик методу (функції), this туди потрапляє контекстомобєкт що викликав цей методб, те що знаходиться зліва від крапки (обєкт  obj)
+// obj.showUserThis(); //*  {userName: 'Alice', showUserThis: ƒ} виклик методу (функції), this туди потрапляє контекстомобєкт що викликав цей методб, те що знаходиться зліва від крапки (обєкт  obj)
 
 //* Виклик без контексту але оголошений як метод обєкту */
 // const user = {
 //   userName: "Petya",
 //   showThis() {
-//     console.log("this", this); //{userName: 'Petya', showThis: ƒ}
+//     console.log("this", this); //*{userName: 'Petya', showThis: ƒ}
 //     console.log("userName", this.userName);
 
 //   },
 // };
 // //user.showThis();
 // const foo = user.showThis;
-// console.log(foo); //ƒ showThis() {  console.log("this", this); //{userName: 'Petya', showThis: ƒ}
-// foo(); // Window {window: Window, self: Window, document: document, location: Location, customElements: CustomElementRegistry, …} коли викликаємо функцію без привязки до обєкту в несуворому режимі отримуємо посилання на глобальний обєкт віндов
+// console.log(foo); //ƒ showThis() {  console.log("this", this); //*{userName: 'Petya', showThis: ƒ}
+// foo(); //* Window {window: Window, self: Window, document: document, location: Location, customElements: CustomElementRegistry, …} коли викликаємо функцію без привязки до обєкту в несуворому режимі отримуємо посилання на глобальний обєкт віндов
 
 // const user = {
 //   userName: "Petya",
 //   showThis() {
-//     console.log("this", this); //{userName: 'Petya', showThis: ƒ}
-//     console.log("userName", this.userName); // в суворому режимі -this undefined,  в несуворому режимі userName undefined
+//     console.log("this", this); //*{userName: 'Petya', showThis: ƒ}
+//     console.log("userName", this.userName); //* в суворому режимі -this undefined,  в несуворому режимі userName undefined
 //   },
 // };
 // //user.showThis();
@@ -127,21 +125,21 @@
 // };
 
 // function foo(callback) {
-//   console.log(callback); //ƒ showThis() {console.log("this", this);}
-//   callback(); // this Window {window: Window, self: Window, document: document, location: Location, customElements: CustomElementRegistry, …} Методи обєкту втрачають свій контекст коли передаються як коллбек функції
+//   console.log(callback); //*ƒ showThis() {console.log("this", this);}
+//   callback(); //* this Window {window: Window, self: Window, document: document, location: Location, customElements: CustomElementRegistry, …} Методи обєкту втрачають свій контекст коли передаються як коллбек функції
 // }
 // foo(user.showThis);
 // foo(() => console.log("lalala"));
 
 // function foo() {
-//   console.log(this.lalala); //undefined
+//   console.log(this.lalala); //*undefined
 // }
 // foo();
 
 // const user = {
 //   userName: "Alice",
 //   showThis() {
-//     console.log(this); //{userName: 'Alice', showThis: ƒ, showName: ƒ}
+//     console.log(this); //*{userName: 'Alice', showThis: ƒ, showName: ƒ}
 //   },
 //   showName() {
 //     console.log(this.userName);
@@ -149,18 +147,18 @@
 // };
 // // user.showThis();
 
-// // const foo = user.showThis;//undefined
-// const foo1 = user.showName;//undefined
+//  const foo = user.showThis;//*undefined
+// const foo1 = user.showName;//*undefined
 
 // foo1();
 
 // const obj = {
 //   name: "Petya",
 // };
-// console.log(obj.age); //undefined;
+// console.log(obj.age); //*undefined;
 
-// // Викликаємо у глобальному контексті
-// showThis(); // "this in showThis: undefined"
+//* Викликаємо у глобальному контексті */
+// showThis(); //* "this in showThis: undefined"
 
 // "use strict";
 
@@ -175,7 +173,7 @@
 // user.showContext = showThis;
 
 //* Викликаємо в контексті об'єкта
-// user.showContext(); // this in showThis: {username: "Poly", showContext: ƒ}
+// user.showContext(); //* this in showThis: {username: "Poly", showContext: ƒ}
 
 //* Викликаємо в глобальному контексті
 
@@ -217,7 +215,7 @@
 
 /**  */
 
-//* Метод call дозволяє викликати функцію в контексті об'єкта, навіть якщо функція не є методом цього об'єкта, а також передає функції певні аргументи.
+//! Метод call дозволяє викликати функцію в контексті об'єкта, навіть якщо функція не є методом цього об'єкта, а також передає функції певні аргументи.
 
 // function greet(str) {
 //   console.log(`${str}, ${this.username}, your room is ${this.room}!`);
@@ -354,7 +352,7 @@
 //   console.log(`Processing an application from ${username}`);
 // }
 
-// makeMessage(customer.getFullName); // TypeError: Cannot read properties of undefined (reading 'firstName')
+// makeMessage(customer.getFullName); //* TypeError: Cannot read properties of undefined (reading 'firstName')
 
 // const customer = {
 //   firstName: "Jacob",
@@ -369,7 +367,7 @@
 //   console.log(`Processing an application from ${username}`);
 // }
 
-// makeMessage(customer.getFullName.bind(customer)); // "Processing an application from Jacob Mercer"
+// makeMessage(customer.getFullName.bind(customer)); //* "Processing an application from Jacob Mercer"
 
 // const library = {
 //   books: 1923,
@@ -380,14 +378,14 @@
 
 // const showBooks = library.logBookCount.bind({ books: 724 });
 
-// showBooks();//Функція logBookCount викликається через метод bind, який прив'язує контекст до об'єкта { books: 724 }. Після того, як функція showBooks викликається, вона викликає метод logBookCount з контекстом { books: 724 }, і тому виводиться значення властивості books цього контексту, тобто 724.
+// showBooks();//* Функція logBookCount викликається через метод bind, який прив'язує контекст до об'єкта { books: 724 }. Після того, як функція showBooks викликається, вона викликає метод logBookCount з контекстом { books: 724 }, і тому виводиться значення властивості books цього контексту, тобто 724.
 
 // "use strict";
 
 // const library = {
 //   books: 1923,
 //   logBookCount() {
-//     console.log(this.books); //Cannot read properties of undefined (reading 'books')Функція showBooks викликається з аргументом library.logBookCount, який є методом об'єкта library. Коли в тілі showBooks викликається callback(), тобто метод logBookCount без прив’язаного контексту, то значенням this у суворому режимі буде undefined. Відповідно спроба знайти на ньому властивість books викличе помилку.
+//     console.log(this.books); //* Cannot read properties of undefined (reading 'books')Функція showBooks викликається з аргументом library.logBookCount, який є методом об'єкта library. Коли в тілі showBooks викликається callback(), тобто метод logBookCount без прив’язаного контексту, то значенням this у суворому режимі буде undefined. Відповідно спроба знайти на ньому властивість books викличе помилку.
 //   },
 // };
 
