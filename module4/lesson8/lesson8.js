@@ -1,6 +1,6 @@
-//* Масив обєктів
-//
-//* Переборка масива
+//* Масив обєктів*/
+
+//* Перебирання масиву
 //* Пошук обєкту за значеннями властивості
 //* Коллекція значень властивості
 
@@ -60,7 +60,7 @@
 // }
 // console.log(friends);
 
-//* Напиши функцію calcTotalPrice(stones, stoneName) яка приймає масив об'єктів та рядок з назвою каменю. Функція рахує і повертає загальну вартість каменів з таким ім'ям та кількістю з об'єкта
+//** Напиши функцію calcTotalPrice(stones, stoneName) яка приймає масив об'єктів та рядок з назвою каменю. Функція рахує і повертає загальну вартість каменів з таким ім'ям та кількістю з об'єкта*/
 
 // const stones = [
 //   (name:"Смарагд", price:1300, quantity: 4)
@@ -82,7 +82,7 @@
 
 // console.log(calcTotalPrice(stones, "Сапфір"));
 
-//* Другий варіант
+//** Другий варіант*/
 
 // const stones = [
 //   (name:"Смарагд", price:1300, quantity: 4)
@@ -105,8 +105,8 @@
 // }
 // console.log(calcTotalPrice(stones, "Сапфір"));
 
-//* Об'єкти
-//*
+//! Об'єкти */
+
 //* Методи об'єкта
 //* Доступ до властивостей об'єкту через this
 //* Змінна за посиланням
@@ -141,17 +141,17 @@
 //   rating: 4,
 //   tracks: ["track-4", "track-5"]
 // }
-// playlist.chengenName = playlist.chengenName; // this =playlist
-//                         // chengenName(newName) {
-//                         //   console.log(newName);
-//                         //   playlist.name = newName;
+// playlist.chengenName = playlist.chengenName; //* this =playlist
+//                         //* chengenName(newName) {
+//                         //*   console.log(newName);
+//                         //*   playlist.name = newName;
 //                         // }
 
 // playlist2.chengenName("Play lalala");// this =playlist2
 
-// // console.log(playlist.chengenName);
-// // console.log("playlist", playlist);
-// // console.log("playlist2", playlist2);
+// console.log(playlist.chengenName);
+// console.log("playlist", playlist);
+// console.log("playlist2", playlist2);
 
 // const obj = {x:1};
 // const obj1 = obj;
@@ -167,7 +167,7 @@
 
 // const myFunction = foo;
 
-//* Синтаксис spred і rest
+//!  Синтаксис spred і rest*/
 //* Залишкові параметри
 //* Збір частини аргументів
 //* Входження параметрів
