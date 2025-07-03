@@ -17,8 +17,8 @@ console.log(city); // undefined, оскільки city не визначено �
 //* Якщо city не визначено в об'єкті user, то буде використано значення за замовчуванням "Dnipro"
 console.log(city); // "Dnipro", оскільки ми задали значення за замовчуванням
 //* Деструктуризація з відсутніми властивостями
-const { userName: name, age: years, city: location = "Lviv" } = user;
-console.log(name); // "Alice"
+const { userName: userNameAlias, age: years, city: location = "Lviv" } = user;
+console.log(userNameAlias); // "Alice"
 
 const { userName, age, city: userCity } = user; // перейменування властивостей
 console.log(userName); // "Alice"
@@ -107,26 +107,27 @@ console.log(location); // "Lviv", оскільки ми задали значе�
 //* Hello my nemeis, I knov html, css and js
 //*  getUserInfo(user)
 
-console.log(name); // "Alice"
-const name = [];
-for (const user of users) {
-  const { name } = user;
-}
+// Example users array for demonstration
+const users = [{ name: "Alice" }, { name: "Bob" }, { name: "Charlie" }];
 
-const name = [];
+// Collect names using for...of loop and destructuring
+const names = [];
 for (const user of users) {
   names.push(user.name);
 }
 
-const names = users.map(({ names }) => user.name);
+// Or using map and destructuring
+const names2 = users.map(({ name }) => name);
+
 console.log(names); // ["Alice", "Bob", "Charlie"]
+console.log(names2); // ["Alice", "Bob", "Charlie"]
 
 //*Дустурктуризація об'єкта для отримання окремих змінних
 const user = {
   id: 1,
-  username: "hary poter"
+  username: "hary poter",
   hrofile: {
-    firstName: "Harry", 
+    firstName: "Harry",
 
     lastName: "Potter",
     age: 11,
@@ -134,6 +135,9 @@ const user = {
       city: "London",
       country: "UK",
     },
+  },
+};
 
-    console.log(`Ім'я: ${firstName}, Прізвище: ${lastName}, Вік: ${age}`);
-    
+console.log(
+  `Ім'я: ${user.hrofile.firstName}, Прізвище: ${user.hrofile.lastName}, Вік: ${user.hrofile.age}`
+);
