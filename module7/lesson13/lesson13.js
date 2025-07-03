@@ -1,9 +1,9 @@
 //* Пошук елементу за допомогою методу querySelector
 const magicBtn = document.querySelector(".magic-btn"); //* Пошук елементу за класом
 //* Пошук елементу за допомогою методу getElementById
-const magicBtn2 = document.getElementById("#magic-btn");
+const magicBtn2 = document.getElementById("magic-btn");
 //* Пошук елементів за допомогою методу getElementsByClassName
-const magicBtns = document.getElementsByClassName(".magic-btn");
+const magicBtns = document.getElementsByClassName("magic-btn");
 //* Пошук елементів за допомогою методу <getElementsByTagName>
 const magicBtns2 = document.getElementsByTagName("button");
 //* Пошук елементів за допомогою методу querySelectorAll
@@ -139,11 +139,11 @@ heroLink.setAttribute("data-hero", "true"); // встановлення знач
 //* remove(name) - видалення атрибута
 heroLink.removeAttribute("data-hero"); // видалення атрибута data-hero
 //* has(name) - перевірка наявності атрибута
-const hasHeroLinkDataHero = heroLink.hasAttribute("data-hero"); // перевірка наявності атрибута data-hero
+//const hasHeroLinkDataHero = heroLink.hasAttribute("data-hero"); // перевірка наявності атрибута data-hero
 //* toggle(name, value) - перемикання значення атрибута
 heroLink.toggleAttribute("data-hero", true); // перемикання значення атрибута data-hero
 //* getNamedItem(name) - отримання атрибута за його назвою
-const heroLinkDataHero = heroLink.attributes.getNamedItem("data-hero"); // отримання атрибута data-hero
+const heroLinkDataHeroAttr = heroLink.attributes.getNamedItem("data-hero"); // отримання атрибута data-hero
 //* setNamedItem(attr) - встановлення атрибута
 const newAttr = document.createAttribute("data-hero");
 newAttr.value = "true"; // створення нового атрибута data-hero
@@ -228,8 +228,7 @@ heroElement.classList.add("new-class"); // додавання класу new-cla
 //* Видалення класу
 heroElement.classList.remove("new-class"); // видалення класу new-class
 //* Перевірка наявності класу
-const hasHeroNewClass = heroElement.classList.contains("new-class"); // перев
-ірка наявності класу new-class
+const hasHeroNewClass = heroElement.classList.contains("new-class"); // перевірка наявності класу new-class
 //* Перемикання класу
 heroElement.classList.toggle("new-class"); // перемикання класу new-class
 //* Додавання класу, якщо його немає, або видалення, якщо він є
@@ -251,7 +250,7 @@ const hasHeroClasses = heroElement.classList.contains("class1") && heroElement.c
 //* Перемикання декількох класів
 heroElement.classList.toggle("class1", true); // перемикання класу class1
 
-herroElement.classList.replaice("class1", "class2"); // заміна класу class1 на class2
+herroElement.classList.replace("class1", "class2"); // заміна класу class1 на class2
 //* Додавання класу, якщо його немає, або видалення, якщо він є 
 heroElement.classList.toggle("class1", true); // додавання класу class1, якщо його немає, або видалення, якщо він є
 //* Додавання класу, якщо його немає, або видалення, якщо він є

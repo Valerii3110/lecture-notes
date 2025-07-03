@@ -142,18 +142,3 @@
 // function onMouseMove(event) {
 //   console.log("event"); // Виводимо повідомлення в консоль при русі миші
 // }
-
-
-/** Реалізуй пошук автомобілів по сайту
- * Користувач потрапляє на сайт і зразу може обрати марку та модель
- */
-
-const form = document.querySelector(".js-form");
-const container = document.querySelector(".js-container");
-function arr.map(item) {
-  return arr.map((car) =>
-  <Li class="car-card">
-    <img src="s${car.img}" alt="${car.type" class ="car-img" />
-
-  
-}
