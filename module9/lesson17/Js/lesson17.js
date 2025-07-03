@@ -132,12 +132,12 @@ const value = 5;
 
 //** Cookie — це маленький фрагмент тексту, який зберігається у браузері. Він допомагає зберігати дані між сесіями: логін, мову, тему, товари в кошику тощо. */
 //* ✅ Створити cookie
-username=Valerii, який буде збережено у браузері.
+document.cookie = "username=Valerii"; // буде збережено у браузері
 
 ///*Прочитати cookie
 
 console.log(document.cookie); //* username=Valerii
-document.cookie повертає всі cookies у вигляді одного рядка (name=value; name2=value2; ...)
+// document.cookie повертає всі cookies у вигляді одного рядка (name=value; name2=value2; ...)
 
 //* 🧹 Видалити cookie
 
@@ -171,10 +171,8 @@ document.cookie = "username=; max-age=0";
 
 //! 1 Локальне сховище (Local Storage): унікальне для кожного вебдодатку і буде однаковим на кількох вкладках, де вебдодаток відкритий. Дані в локальному сховищі не видаляються, навіть після закриття браузера або вимкнення комп'ютера. Щоб їх видалити, потрібно використовувати JavaScript. Доступ до даних у локальному сховищі можливий з будь-якої вкладки або вікна браузера, пов'язаної з доменом, який створив дані.
 //* Доступ до локального сховища можна отримати в об’єкті window:
-console.log(window.localStorage);//* Storage {length: 0}
+console.log(window.localStorage); //* Storage {length: 0}
 console.log(localStorage); //* Storage {length: 0}
-
-
 
 //* Додавання даних
 //* Давай додамо пару ключ-значення до локального сховища за допомогою методу setItem(key, value), доступного в об’єкті localStorage:
@@ -188,12 +186,12 @@ console.log(localStorage); // Storage {ui-theme: "light", length: 1}
 
 //* Метод getItem(key) дозволяє зчитати зі сховища запис із ключем key і повертає його значення у JSON форматі.
 
-const savedTheme = localStorage.getItem("ui-theme"); 
+const savedTheme = localStorage.getItem("ui-theme");
 console.log(savedTheme); // "light"
 
 //* Якщо у сховищі відсутній запис з таким ключем, метод повертає null.
 
-const savedItem = localStorage.getItem("key-that-does-not-exist"); 
+const savedItem = localStorage.getItem("key-that-does-not-exist");
 console.log(savedItem); // null
 
 //* Якщо значення є примітивним типом, немає потреби його парсити.
@@ -227,7 +225,7 @@ console.log(localStorage.getItem("ui-theme")); // null
 localStorage.setItem("ui-theme", "light");
 localStorage.setItem("notif-level", "mute");
 
-console.log(localStorage); 
+console.log(localStorage);
 // Storage {notif-level: 'mute', ui-theme: 'light', length: 2}
 
 localStorage.clear();
@@ -239,8 +237,6 @@ console.log(localStorage); // Storage {length: 0}
 console.log(window.sessionStorage); // Storage {length: 0}
 
 //! Методом setItem(key, value) можна записувати як рядки, так і складні типи даних.
-
-
 
 sessionStorage.setItem("user-id", "123");
 sessionStorage.setItem(
@@ -265,56 +261,57 @@ console.log(sessionStorage); // Storage {user-id: '123', length: 1}
 sessionStorage.clear();
 console.log(sessionStorage); // Storage {length: 0}
 
-Кейс: Форма з повідомленням
+//* Кейс: Форма з повідомленням
 
-
-
-Створимо форму для введення повідомлення.
-
-
+//*Створимо форму для введення повідомлення.
 
 <form class="feedback-form">
   <textarea name="message"></textarea>
   <button type="submit">Send feedback</button>
-</form>
+</form>;
 
+//* Під час сабміту форми будемо виводити в консоль значення текстового поля та очищати форму.
 
+// const form = document.querySelector(".feedback-form");
 
-Під час сабміту форми будемо виводити в консоль значення текстового поля та очищати форму.
-
-
-
-const form = document.querySelector(".feedback-form");
-
-form.addEventListener("submit", evt => {
+form.addEventListener("submit", (evt) => {
   evt.preventDefault();
-	console.log(evt.target.elements.message.value);
+  console.log(evt.target.elements.message.value);
   form.reset();
 });
 
+//! Проблема
 
+//* Якщо користувач ввів повідомлення в текстове поле і перезавантажив сторінку, не надіславши форму, під час перезавантаження сторінки введене повідомлення пропадає.
 
-Проблема
+//* Рішення
 
+//* Зробимо так, щоб при перезавантаженні сторінки зберігалося введене повідомлення.
 
+//* Для цього використовуємо локальне сховище, щоб зберегти поточне значення текстового поля під час введення.
 
-Якщо користувач ввів повідомлення в текстове поле і перезавантажив сторінку, не надіславши форму, під час перезавантаження сторінки введене повідомлення пропадає.
+// const form = document.querySelector(".feedback-form");
+// const localStorageKey = "goit-example-message";
 
+form.addEventListener("input", (evt) => {
+  localStorage.setItem(localStorageKey, evt.target.value);
+});
 
+form.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  console.log(evt.target.elements.message.value);
+  form.reset();
+});
 
-Рішення
+//* Щоразу, коли змінюється значення поля, тобто відбувається подія "input", ми:
 
+//* використовуємо делегування подій;
+//* ловимо подію на формі;
+//* використовуємо властивість target для запису поточного значення поля в локальне сховище.
 
+//* Під час сабміту форми будемо очищати збережене значення методом removeItem.
 
-Зробимо так, щоб при перезавантаженні сторінки зберігалося введене повідомлення.
-
-
-
-Для цього використовуємо локальне сховище, щоб зберегти поточне значення текстового поля під час введення.
-
-
-
-const form = document.querySelector(".feedback-form");
+// const form = document.querySelector(".feedback-form");
 const localStorageKey = "goit-example-message";
 
 form.addEventListener("input", (evt) => {
@@ -323,49 +320,16 @@ form.addEventListener("input", (evt) => {
 
 form.addEventListener("submit", (evt) => {
   evt.preventDefault();
-	console.log(evt.target.elements.message.value);
-  form.reset();
-});
-
-
-
-Щоразу, коли змінюється значення поля, тобто відбувається подія "input", ми:
-
-
-
-використовуємо делегування подій;
-ловимо подію на формі;
-використовуємо властивість target для запису поточного значення поля в локальне сховище.
-
-
-Під час сабміту форми будемо очищати збережене значення методом removeItem.
-
-
-
-const form = document.querySelector(".feedback-form");
-const localStorageKey = "goit-example-message";
-
-form.addEventListener("input", (evt) => {
-  localStorage.setItem(localStorageKey, evt.target.value);
-});
-
-form.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-	console.log(evt.target.elements.message.value);
+  console.log(evt.target.elements.message.value);
   localStorage.removeItem(localStorageKey);
   form.reset();
 });
 
+//* Останнім кроком необхідно додати код читання збереженого повідомлення з локального сховища і встановлення його початковим значенням для текстового поля під час завантаження сторінки.
 
-
-Останнім кроком необхідно додати код читання збереженого повідомлення з локального сховища і встановлення його початковим значенням для текстового поля під час завантаження сторінки.
-
-
-
-const form = document.querySelector(".feedback-form");
+// const form = document.querySelector(".feedback-form");
 const textarea = form.elements.message;
-const localStorageKey = "goit-example-message";
-
+// const localStorageKey = "goit-example-message";
 textarea.value = localStorage.getItem(localStorageKey) ?? "";
 
 form.addEventListener("input", (evt) => {
@@ -374,7 +338,7 @@ form.addEventListener("input", (evt) => {
 
 form.addEventListener("submit", (evt) => {
   evt.preventDefault();
-	console.log(evt.target.elements.message.value);
+  console.log(evt.target.elements.message.value);
   localStorage.removeItem(localStorageKey);
   form.reset();
 });
@@ -385,71 +349,34 @@ form.addEventListener("submit", (evt) => {
 <form class="feedback-form">
   <textarea name="message"></textarea>
   <button type="submit">Send feedback</button>
-</form>
-
-
+</form>;
 
 //* Під час сабміту форми будемо виводити в консоль значення текстового поля та очищати форму.
 
+// const form = document.querySelector(".feedback-form");
 
-
-const form = document.querySelector(".feedback-form");
-
-form.addEventListener("submit", evt => {
-  evt.preventDefault();
-	console.log(evt.target.elements.message.value);
-  form.reset();
-});
-
-
+// (This block is removed to avoid redeclaration)
 
 //! Проблема
 
-
-
 //* Якщо користувач ввів повідомлення в текстове поле і перезавантажив сторінку, не надіславши форму, під час перезавантаження сторінки введене повідомлення пропадає.
-
-
 
 //** Рішення
 
-
-
 //* Зробимо так, щоб при перезавантаженні сторінки зберігалося введене повідомлення.
-
-
 
 //* Для цього використовуємо локальне сховище, щоб зберегти поточне значення текстового поля під час введення.
 
-
-
 const form = document.querySelector(".feedback-form");
-const localStorageKey = "goit-example-message";
+// const localStorageKey = "goit-example-message";
 
-form.addEventListener("input", (evt) => {
-  localStorage.setItem(localStorageKey, evt.target.value);
-});
+// Remove duplicate and incomplete event listener
 
-form.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-	console.log(evt.target.elements.message.value);
-  form.reset();
-});
-
-
-
-//* Щоразу, коли змінюється значення поля, тобто відбувається подія "input", ми:
-//* використовуємо делегування подій;
-//* ловимо подію на формі;
 //* використовуємо властивість target для запису поточного значення поля в локальне сховище.
-
-
 //* Під час сабміту форми будемо очищати збережене значення методом removeItem.
 
-
-
-const form = document.querySelector(".feedback-form");
-const localStorageKey = "goit-example-message";
+// const form = document.querySelector(".feedback-form");
+// const localStorageKey = "goit-example-message";
 
 form.addEventListener("input", (evt) => {
   localStorage.setItem(localStorageKey, evt.target.value);
@@ -457,30 +384,7 @@ form.addEventListener("input", (evt) => {
 
 form.addEventListener("submit", (evt) => {
   evt.preventDefault();
-	console.log(evt.target.elements.message.value);
-  localStorage.removeItem(localStorageKey);
-  form.reset();
-});
-
-
-
-//* Останнім кроком необхідно додати код читання збереженого повідомлення з локального сховища і встановлення його початковим значенням для текстового поля під час завантаження сторінки.
-
-
-
-const form = document.querySelector(".feedback-form");
-const textarea = form.elements.message;
-const localStorageKey = "goit-example-message";
-
-textarea.value = localStorage.getItem(localStorageKey) ?? "";
-
-form.addEventListener("input", (evt) => {
-  localStorage.setItem(localStorageKey, evt.target.value);
-});
-
-form.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-	console.log(evt.target.elements.message.value);
+  console.log(evt.target.elements.message.value);
   localStorage.removeItem(localStorageKey);
   form.reset();
 });
