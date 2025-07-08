@@ -247,3 +247,18 @@ de;
 // import { user as userName, logger } from "....";
 
 // console.log(userName); //* "Petya"
+
+//* Імпорт простору імен (namespace import) — це техніка імпортування всього вмісту модуля як об'єкта з іменем, що представляє простір імен цього модуля. Це означає, що всі іменовані експорти з модуля стають властивостями цього об'єкта. Це зручно, коли потрібно імпортувати багато різних функцій, змінних або класів з модуля, не обираючи їх по одному.
+
+//* Наприклад:
+// Module user.js
+export const name = "Mango";
+export const age = 26;
+export const email = "mango@mail.com";
+
+// Your current module
+import * as user from "./myModule.js";
+
+console.log(user.name); // "Mango"
+console.log(user.age); // 26
+console.log(user.email); // "mango@mail.com"

@@ -300,10 +300,158 @@ const container = document.getElementById("container"); */
 //! 3. document.querySelector("p").firstElementChild — ❌ document.querySelector("p") — знайде перший <p>, але у нього немає дочірніх елементів, тільки текст. Тому .firstElementChild поверне null.
 
 //! 4. document.querySelector(".container").firstElementChild — ❌ У HTML елемент має id="container", а не class="container". Тому цей селектор нічого не знайде.
-const button = document.querySelector(".my-button");
+// const button = document.querySelector(".my-button");
 
-const handleClick = () => {
-  console.log("The button was pressed and now the next image will appear");
-};
+// const handleClick = () => {
+//   console.log("The button was pressed and now the next image will appear");
+// };
 
-button.addEventListener("click", handleClick);
+// button.addEventListener("click", handleClick);
+
+//* Завдання наступне:
+//* В index.html є розмітка:
+// <span id="text">Наведіть мишу на цей текст</span>;
+//? Що відбудеться при виконанні цього скрипта?
+// const paragraph = document.getElementById("text");
+// paragraph.addEventListener("mouseenter", function () {
+//   this.style.backgroundColor = "red";
+// });
+//? Варіанти відповіді: Error - :flag-ua:; Колір текста стане червоним - :blue_heart:; Нічого не відбудеться - :yellow_heart:; Фон стане червоним - :heart_on_fire: Не спішіть, подумайте. Правильну відповідь поставте у вигляді відповідних реакцій. В обговореннях відповіді писати не потрібно)Ввечері в обговореннях надам вірну відповідь з поясненнями.
+//* Правильна відповідь - Фон стане червоним. Через getElementById знаходимо елемент в розмітці, додаємо на нього слухача “mouseenter” - це подія миші, коли вона наводиться на елемент. Всередині обробника слухача події через this звертаємось до самого елемента, на якому подія, і додаємо на нього червоний бекграунд.
+
+//! Делегування подій – потужна техніка для оптимізації роботи з подіями. Замість того, щоб призначати події кожному елементу окремо, ми можемо призначити обробник події спільному предку, а подія "спливатиме" через DOM. Це зручно, коли у нас є багато однотипних елементів або елементи додаються динамічно.
+//* Основні підходи до делегування подій включають:
+//* 1 Використання event.target для перевірки цільового елемента, через nodeName.
+// document.querySelector("ul").addEventListener("click", function (event) {
+//   // Перевіряємо, чи подія відбулася на елементі <li>
+//   if (event.target.nodeName === "LI") {
+//     console.log("Натиснуто на елемент списку:", event.target.textContent);
+//   }
+// });
+// //* Використання класів або атрибутів для точного визначення елемента.
+// document.querySelector(".parent").addEventListener("click", function (event) {
+//   // Перевіряємо, чи елемент має клас 'button'
+//   if (event.target.classList.contains("button")) {
+//     console.log("Натиснуто на кнопку:", event.target.textContent);
+//   }
+// });
+// //* Використання методу closest() для роботи з ієрархією DOM.
+// document
+//   .querySelector(".container")
+//   .addEventListener("click", function (event) {
+//     // Шукаємо найближчого предка елемента, що відповідає певному селектору
+//     const button = event.target.closest(".button");
+//     if (button) {
+//       console.log("Натиснуто на кнопку:", button.textContent);
+//     }
+//   });
+//* Бібліотеки в JS допомагають спростити складні або рутинні операції. Ви можете знайти багато цікавих і корисних бібліотек для вирішення своєї задачі, використовуючі такі популярні ресурси, як cdn чи npm, або просто погугливши (тут ви обов’язково знайдете потрібне рішення).
+//* Документація до бібліотеки зазвичай поділяється на кілька основних розділів. Важливо вміти з нею працювати, щоб швидко знайти потрібну інформацію: Огляд, Інсталяція, Використання, API Reference, Параметри, Приклади.
+
+//! Деструктуризація — це зручний спосіб "розпаковки" значень з масивів або властивостей з об’єктів у змінні. Вона спрощує код, особливо коли потрібно працювати з великими масивами чи об'єктами.
+//! Важливі моменти:
+//* Розберіться, як працюють обробники подій і чому делегування подій може бути корисним у певних ситуаціях.
+//* Починайте читати документацію бібліотек, це не так просто як може здатись, але до цього необхідно звикати:wink:
+
+//* Пропоную вам задачку, яку ви можете вирішити для вдосконалення своїх навичок по сьомому модулю.
+//! Завдання наступне:
+
+// <div id="container">
+//   <p>Перший параграф</p>
+//   <p>Другий параграф</p>
+//   <p>Третій параграф</p>
+// </div>;
+//? Як отримати посилання на елемент з текстом «Перший параграф»?
+// document.querySelector("#container").firstElementChild;
+//* Перевірка:
+// console.log("Контейнер:", container); //* Контейнер: <div id=​"container">​…​</div>​<p>​Перший параграф​</p>​<p>​Другий параграф​</p>​<p>​Третій параграф​</p>​</div>​
+
+// const firstChild = container.firstElementChild;
+// console.log(firstChild);//* Контейнер: <div id=​"container">​…​</div>​<p>​Перший параграф​</p>​<p>​Другий параграф​</p>​<p>​Третій параграф​</p>​</div>​
+
+//! Завдання наступне:
+
+// <span id="text">Наведіть мишу на цей текст</span>
+//? Що відбудеться при виконанні цього скрипта?
+// const paragraph = document.getElementById("text");
+// paragraph.addEventListener("mouseenter", function () {
+//   this.style.backgroundColor = "red";
+// });
+//* Відповіді: Фон  тексту стане червоним
+
+//! Завдання наступне:
+//* HTML
+// <ul id="parent-list">
+//    <li>Item 1</li>
+//     <li>Item 2</li>
+//     <li>Item 3</li>
+//     <li>Item 4</li>
+//     <li>Item 5</li>
+// </ul>
+
+//* CSS
+// ul {
+//    list-style-type: none;
+// }
+// li {
+//  cursor: pointer;
+//  }
+// .selected {
+//   color: red;
+//   }
+//* JS
+// document.getElementById('parent-list').
+//   addEventListener('click', function(event) {
+//     if (event.target.tagName === 'LI') {
+//         const items = document.querySelectorAll('li');
+//         items.forEach(function(item) {
+//             item.classList.remove('selected');
+//         })
+//         event.target.classList.add('selected');
+//     }
+//* Відповідь: Код буде встановлювати червоний колір тексту для натиснутого елемента, а також знімати попередню позначку з інших елементів.
+
+//! Завдання наступне:
+//? Що буде виведено в консоль?
+// const user = {email: "abc@gmail.com", nickname: "abc", age: 30};
+// const {nick, age, email = "yyy"} = user;
+// console.log(nick, age, email);
+//* Відповіді: undefined 30 abc@gmail.com.
+//* Ми деструктуризуємо об'єкт і витягуємо його властивості, вказавши для email дефолтну властивість.
+//* По порядку:
+//* 1. Ключа nick немає, тому буде undefined
+//* 2. Ключ age є, тому беремо його значення 30.
+//* Ключ email теж є, тому беремо його значення abc@gmail.com, а не дефолтне (яке застосується тільки якщо у нашому об'єкі user не буде ключа email).
+
+//! Завдання наступне:
+//? Що буде виведено в консоль?
+function foo() {
+  console.log("This is a function!");
+}
+console.log(JSON.stringify(foo));
+//* Відповіді: undefined - При спробі перетворити функцію у JSON результатом буде undefined , оскільки JSON не може представляти функції. JSON (JavaScript Object Notation) призначений для представлення структур даних, таких як об'єкти та масиви, у вигляді рядка. Він не може включати функції.
+
+//! Завдання наступне:
+//? Що буде виведено в консоль?
+// Збереження об'єкта
+function saveObject(key, obj) {
+  localStorage.setItem(key, JSON.stringify(obj));
+}
+
+// Отримання об'єкта
+function getObject(key) {
+  const data = localStorage.getItem(key);
+  return data ? JSON.parse(data) : null;
+}
+
+// Видалення об'єкта
+function removeObject(key) {
+  localStorage.removeItem(key);
+}
+
+const user = { name: "John", age: 30 };
+saveObject("user", user);
+console.log(getObject("user"));
+removeObject("user");
+console.log(getObject("user"));
+//* Відповіді:{ name: 'John', age: 30 } null - Функція saveObject зберігає об'єкт у вигляді JSON-рядка в localStorage. Функція getObject отримує цей рядок і парсить його назад в об'єкт – бачимо в консолі об’єкт. Функція removeObject видаляє об’єкт зі сховища, тому вдруге в консоль виводиться null.
