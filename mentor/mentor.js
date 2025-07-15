@@ -425,33 +425,70 @@ const container = document.getElementById("container"); */
 
 //! Завдання наступне:
 //? Що буде виведено в консоль?
-function foo() {
-  console.log("This is a function!");
-}
-console.log(JSON.stringify(foo));
+// function foo() {
+//   console.log("This is a function!");
+// }
+// console.log(JSON.stringify(foo));
 //* Відповіді: undefined - При спробі перетворити функцію у JSON результатом буде undefined , оскільки JSON не може представляти функції. JSON (JavaScript Object Notation) призначений для представлення структур даних, таких як об'єкти та масиви, у вигляді рядка. Він не може включати функції.
 
 //! Завдання наступне:
 //? Що буде виведено в консоль?
-// Збереження об'єкта
-function saveObject(key, obj) {
-  localStorage.setItem(key, JSON.stringify(obj));
-}
+//* Збереження об'єкта
+// function saveObject(key, obj) {
+//   localStorage.setItem(key, JSON.stringify(obj));
+// }
 
 // Отримання об'єкта
-function getObject(key) {
-  const data = localStorage.getItem(key);
-  return data ? JSON.parse(data) : null;
-}
+// function getObject(key) {
+//   const data = localStorage.getItem(key);
+//   return data ? JSON.parse(data) : null;
+// }
 
-// Видалення об'єкта
-function removeObject(key) {
-  localStorage.removeItem(key);
-}
+// // Видалення об'єкта
+// function removeObject(key) {
+//   localStorage.removeItem(key);
+// }
 
-const user = { name: "John", age: 30 };
-saveObject("user", user);
-console.log(getObject("user"));
-removeObject("user");
-console.log(getObject("user"));
+// const user = { name: "John", age: 30 };
+// saveObject("user", user);
+// console.log(getObject("user"));
+// removeObject("user");
+// console.log(getObject("user"));
 //* Відповіді:{ name: 'John', age: 30 } null - Функція saveObject зберігає об'єкт у вигляді JSON-рядка в localStorage. Функція getObject отримує цей рядок і парсить його назад в об'єкт – бачимо в консолі об’єкт. Функція removeObject видаляє об’єкт зі сховища, тому вдруге в консоль виводиться null.
+
+//! Завдання наступне:
+//* В якому порядку будуть виведені консолі?
+setTimeout(() => console.log(1), 0);
+
+console.log(2);
+
+new Promise((res) => {
+  console.log(3);
+  res();
+}).then(() => console.log(4));
+
+console.log(5);
+//* Відповіді: 2 3 5 4 1 - :blue_heart: Спочатку виконається весь синхронний код – 2 3 5, колбек всередині new Promise виконується синхронно. Далі всі асинхронні задачі діляться на мікро- і макротаски.Обробка проміса – це мікротаска, тому вона виконається раніше, а колбек у setTimeout виконається в останню чергу, оскільки це макротаска, навіть не дивлячись на те, шо час затримки – 0 мс. Отже правильна відповідь 2 3 5 4 1.
+
+//! Завдання наступне:
+//? Що буде виведено в консоль?
+function fetchData(statusCode) {
+  return fetch(`https://httpstat.us/${statusCode}`).then((response) => {
+    if (response.ok) {
+      return response;
+    } else {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+  });
+}
+
+fetchData(200)
+  .then((result) => console.log(result))
+  .catch((error) => console.log(error.message));
+fetchData(404)
+  .then((result) => console.log(result))
+  .catch((error) => console.log(error.message));
+fetchData(500)
+  .then((result) => console.log(result))
+  .catch((error) => console.log(error.message));
+//  Відповідь - Дані для статусу 200, помилка для 404, помилка для 500.
