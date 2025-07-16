@@ -1,13 +1,12 @@
 {
   "recommendations": [
-    "esbenp.prettier-vscode", // Форматування коду
-    "dbaeumer.vscode-eslint", // Аналіз коду з ESLint
-    "streetsidesoftware.code-spell-checker", // Перевірка орфографії
-    "vscode-google-translate", // Переклад тексту в коді
-    "aaron-bond.better-comments", // Кольорові коментарі (TODO, NOTE тощо)
-    "formulahendry.auto-close-tag", // Автозакриття HTML/JSX тегів
-    "formulahendry.auto-rename-tag", // Автоперейменування тегів
-    "ecmel.vscode-html-css", // Підказки класів CSS у HTML
-    "gruntfuggly.todo-tree" // Дерево позначок TODO/FIXME
+    "pkief.material-icon-theme", // Іконки (альтернатива vscode-icons)
+    "vscode-icons-team.vscode-icons", // Іконки, якщо ти вже їх використовуєш
+    "zhuangtongfa.Material-theme", // One Dark Pro тема
+    "esbenp.prettier-vscode", // Prettier
+    "dbaeumer.vscode-eslint", // ESLint
+    "streetsidesoftware.code-spell-checker", // CSpell для перевірки правопису
+    "fanyi.translate", // Google Translate
+    "aaron-bond.better-comments" // Better Comments
   ]
 }
