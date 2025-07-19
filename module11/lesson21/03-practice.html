@@ -3,43 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Practice</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="./css/common.css" />
+    <title>TheCatAPI practice</title>
   </head>
   <body>
-    <p><a href="index.html">Go back</a></p>
+    <p>
+      <a href="index.html">← Go Back </a>
+    </p>
 
-    <form action="submit" class="js-search-form search-form">
-      <div class="form-group">
-        <label for="city" class="label">Введіть назву міста:</label>
-        <input
-          type="text"
-          name="city"
-          class="search-input"
-          autocomplete="off"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="days" class="label">Виберіть кількість днів:</label>
-        <div class="input-group">
-          <select name="days" class="days-select">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
-          <button class="search-button">Пошук</button>
+    <div class="wrapper">
+      <!-- Форма пошуку -->
+      <form id="search-form" class="search-form">
+        <div class="form-group">
+          <label for="breed-input">Оберіть породу кота:</label>
+          <input
+            list="breeds-list"
+            id="breed-input"
+            class="input-field"
+            placeholder="Наприклад: Bengal"
+            autocomplete="off"
+          />
+          <datalist id="breeds-list"></datalist>
         </div>
-      </div>
-    </form>
-    <ul class="js-list weather-cards"></ul>
 
-    <script src="./js/03-practice.js"></script>
+        <button type="submit" class="btn">Знайти зображення</button>
+      </form>
+
+      <!-- Лоадер -->
+      <div id="loader" class="loader hidden">
+        <p>Завантаження...</p>
+      </div>
+    </div>
+
+    <!-- Контейнер для картки -->
+    <div id="cat-card" class="card-container"></div>
+
+    <script src="src/js/03-practice.js" type="module"></script>
   </body>
 </html>
