@@ -1,3 +1,4 @@
+import axios from 'axios';
 // let a = 6;
 // let b = false;
 // let c = "12";
@@ -472,23 +473,87 @@ const container = document.getElementById("container"); */
 
 //! Завдання наступне:
 //? Що буде виведено в консоль?
-function fetchData(statusCode) {
-  return fetch(`https://httpstat.us/${statusCode}`).then((response) => {
-    if (response.ok) {
-      return response;
-    } else {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-  });
+// function fetchData(statusCode) {
+//   return fetch(`https://httpstat.us/${statusCode}`).then((response) => {
+//     if (response.ok) {
+//       return response;
+//     } else {
+//       throw new Error(`HTTP error! status: ${response.status}`);
+//     }
+//   });
+// }
+
+// fetchData(200)
+//   .then((result) => console.log(result))
+//   .catch((error) => console.log(error.message));
+// fetchData(404)
+//   .then((result) => console.log(result))
+//   .catch((error) => console.log(error.message));
+// fetchData(500)
+//   .then((result) => console.log(result))
+//   .catch((error) => console.log(error.message));
+//  Відповідь - Дані для статусу 200, помилка для 404, помилка для 500.
+
+//! Завдання наступне:
+//?сЩо буде виведено в консоль?
+function postData() {
+  return fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      title: 'foo',
+      body: 'bar',
+      userId: 1,
+    }),
+  }).then((response) => response.json());
 }
 
-fetchData(200)
-  .then((result) => console.log(result))
-  .catch((error) => console.log(error.message));
-fetchData(404)
-  .then((result) => console.log(result))
-  .catch((error) => console.log(error.message));
-fetchData(500)
-  .then((result) => console.log(result))
-  .catch((error) => console.log(error.message));
-//  Відповідь - Дані для статусу 200, помилка для 404, помилка для 500.
+postData().then((result) => console.log(result)); //*
+// {
+//   "title": "foo",
+//   "body": "bar",
+//   "userId": 1,
+//   "id": 101
+// }
+//* Функція postData робить POST-запит з JSON-даними. Сервер відповідає створеним об'єктом поста, який виводиться в консоль.
+
+//! Завдання наступне:
+//? Що буде виведено в консоль?
+// async function fetchData() {
+//   throw new Error('Something went wrong');
+// }
+
+// async function getData() {
+//   try {
+//     const data = await fetchData();
+//     return data;
+//   } catch (error) {
+//     return `Caught error: ${error.message}`;
+//   }
+// }
+//* : “Caught error: Something went wrong” - :flag-ua:;
+
+async function fetchPage(pageNumber) {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/posts?_page=${pageNumber}&_limit=5`
+  );
+  const data = await response.json();
+  return data;
+}
+
+async function fetchNextPage(currentPageNumber) {
+  const nextPageNumber = currentPageNumber + 1;
+  return await fetchPage(nextPageNumber);
+}
+
+fetchNextPage(1).then((result) => console.log(result));
+// //* [
+//   { "userId": 1, "id": 6, "title": "...", "body": "..." },
+//   { "userId": 1, "id": 7, "title": "...", "body": "..." },
+//   { "userId": 1, "id": 8, "title": "...", "body": "..." },
+//   { "userId": 1, "id": 9, "title": "...", "body": "..." },
+//   { "userId": 1, "id": 10, "title": "...", "body": "..." }
+// ]
+//* Функція fetchPage отримує дані з API за номером сторінки, а fetchNextPage викликає fetchPage з наступним номером сторінки. Результат виводиться в консоль.
